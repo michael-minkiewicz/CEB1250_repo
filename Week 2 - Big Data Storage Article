@@ -1,0 +1,17 @@
+Here is the link to the Big Data Storage article I read:
+http://www.whatmobile.net/startup-data-challenges-pick-right-database/
+
+The article was titled: Startup data challenges: how to pick the right database? | What Mobile
+
+The article discussed data storage problems that startup companies face, the focus was mainly on which type of databse should a startup use SQL vs NoSQL.
+The article listed the pro & cons for both SQL & NoSQL.
+SQL is for more structured databases, so if the business is not growing exponentially this is a good option.
+SQL has been around and used industry wide for a very long time therefore a lot of support and additional tools available to you.
+A disadvantage of SQL is scalabilities when your business grows.
+NoSQL is better suited for businesses that are collecting vast amounts of data and arent too sure yet how they want to desal with it.
+NoSQL provides easy scalability
+NoSQL prevents reduces data bottlenecks as the data flows through the entity.
+NoSQL usually comes with cloud compatibility therefore this is way more attractive for startup business since they will want to be able to easily access their data from anywhere.
+A disadvantage of NoSQL is compatibility challenges.
+In the end it depends on what level of data the startup will be collecting, the level of growth anticipated by the startup these will be key drivers to determine the type of database a startup will pick.
+I found this article had a direct link with the material we learned in the last 2 classes and it allowed me to understand how these databases are used in real life situations.
