@@ -1,0 +1,10 @@
+link to article: 
+https://diginomica.com/the-data-warehouse-is-dead-long-live-the-data-warehouse/
+
+My thoughts on the article:
+
+Data warehouses in the past had failed to deliver the insights that the business users were looking to obtain from the data being stored on the datawarehouse.
+With the evolution towards Big Data, now Data warehouses will be become more important to organizations because now the business users will really be able to get actionable data to perform analytics, this is mainly due to the evolution of the technology.
+Now there is a competition between the Hybrid Data warehouses and the pure cloud solutions.
+The question is does the cloud data warehouse provide and advantage to the user, the article claims scale wise cloud based will be cheaper; there is also more flexibility with cloud based; however for performance it is still unknown whether hybrid vs cloud performs better; Security wise the article believes that the hybrid datawarehouse has a greater security risk.
+In the end it really depends what the business needs are to determine what is the best type of data warehouse hybrid vs pure cloud.
