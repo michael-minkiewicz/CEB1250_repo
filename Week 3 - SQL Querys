@@ -1,0 +1,11 @@
+Write a SQL query to get the third highest salary of an employee from employee_table 
+
+mysql> select * from employees inner join salaries on employees.emp_no = salaries.emp_no;
+
+mysql> select * from employees inner join salaries on employees.emp_no = salaries.emp_no where salary = (select salary from salaries order by salary desc limit 2, 1);
++--------+------------+------------+-----------+--------+------------+--------+--------+------------+------------+
+| emp_no | birth_date | first_name | last_name | gender | hire_date  | emp_no | salary | from_date  | to_date    |
++--------+------------+------------+-----------+--------+------------+--------+--------+------------+------------+
+| 254466 | 1963-05-27 | Honesty    | Mukaidono | M      | 1986-08-08 | 254466 | 156286 | 2001-08-04 | 9999-01-01 |
++--------+------------+------------+-----------+--------+------------+--------+--------+------------+------------+
+1 row in set (2.15 sec)
