@@ -18,3 +18,5 @@ mysql> select employees.first_name, employees.last_name, titles.title from emplo
 
 mysql> select salary from salaries where to_date = '9999-01-01';
 
+Does not work:
+mysql> select * from employees inner join salaries on employees.emp_no = salaries.emp_no where salary = (select salary from salaries where salary % 2 = 0 and to_date = '9999-01-01');
