@@ -9,3 +9,8 @@ mysql> select * from employees inner join salaries on employees.emp_no = salarie
 | 254466 | 1963-05-27 | Honesty    | Mukaidono | M      | 1986-08-08 | 254466 | 156286 | 2001-08-04 | 9999-01-01 |
 +--------+------------+------------+-----------+--------+------------+--------+--------+------------+------------+
 1 row in set (2.15 sec)
+
+Write a SQL that returns the employee name and title for all employees with even number as actual salary (to_date is 9999-01-01)
+
+mysql> select * from salaries where salary % 2 = 0 and to_date = '9999-01-01';
+
