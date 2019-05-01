@@ -14,3 +14,7 @@ Write a SQL that returns the employee name and title for all employees with even
 
 mysql> select * from salaries where salary % 2 = 0 and to_date = '9999-01-01';
 
+mysql> select employees.first_name, employees.last_name, titles.title from employees inner join titles on employees.emp_no = titles.emp_no;
+
+mysql> select salary from salaries where to_date = '9999-01-01';
+
