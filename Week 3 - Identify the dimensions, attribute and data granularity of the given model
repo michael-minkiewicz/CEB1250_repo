@@ -1,0 +1,12 @@
+Identify the dimensions, attribute and data granularity of the given model
+
+Dimensions: Store; Time; Product
+
+Attributes: (Store - Milan; Rome; Nice; Paris)
+            (Time - Q1; Q2; Q3; Q4)
+            (Product - Games; DVDs; Books; CDs)
+
+Granularity: (Store - City Level)
+              (Time - Quarterly basis)
+              (Product - Categories of products sold)
+
