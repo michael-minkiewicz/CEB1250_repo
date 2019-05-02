@@ -10,6 +10,19 @@ mysql> select * from employees inner join salaries on employees.emp_no = salarie
 +--------+------------+------------+-----------+--------+------------+--------+--------+------------+------------+
 1 row in set (2.15 sec)
 
+
+
+
+What is the difference between ‘HAVING’ CLAUSE and a ‘WHERE’ CLAUSE
+
+1 - Apart from SELECT queries, you can use WHERE clause with UPDATE and DELETE clause but HAVING clause can only be used with SELECT query.
+2 - WHERE clause is used for filtering rows and it applies on each and every row, while HAVING clause is used to filter groups in SQL.
+3 - One syntax level difference between WHERE and HAVING clause is that, former is used before GROUP BY clause, while later is used after GROUP BY clause.
+4 - When WHERE and HAVING clause are used together in a SELECT query with aggregate function,  WHERE clause is applied first on individual rows and only rows which pass the condition is included for creating groups. Once group is created, HAVING clause is used to filter groups based upon condition specified.
+
+
+
+
 Write a SQL that returns the employee name and title for all employees with even number as actual salary (to_date is 9999-01-01)
 
 mysql> select employees.emp_no, employees.first_name, employees.last_name, titles.title, salaries.salary, salaries.to_date from employees inner join (titles inner join salaries on salaries.emp_no = titles.emp_no) on employees.emp_no = titles.emp_no where  salaries.salary % 2 = 0 and salaries.to_date = '9999-01-01';
