@@ -37,3 +37,24 @@ mysql> SELECT employees.emp_no, AVG(salaries.salary) as avg_salary FROM employee
 
 
 
+Return the minimum salary of the salary table
+
+mysql> select MIN(salary) as min_salary from salaries;
++------------+
+| min_salary |
++------------+
+|      38623 |
++------------+
+1 row in set (0.43 sec)
+
+
+
+Return the maximum value for date of birth on the employee table
+
+mysql> select MAX(birth_date) as max_birth_date from employees;
++----------------+
+| max_birth_date |
++----------------+
+| 1965-02-01     |
++----------------+
+1 row in set (0.05 sec)
