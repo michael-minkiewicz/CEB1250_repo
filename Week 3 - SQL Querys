@@ -16,6 +16,17 @@ mysql> select employees.emp_no, employees.first_name, employees.last_name, title
 
 
 
+·What is wrong with the following query, re-write it making the needed corrections.
+·SELECT employee.emp_no, AVG(salaries.salary)
+·FROM employee INNER JOIN salaries AT employee.emp_no = salaries.emp_no
+·HAVING AVG(salaries.salary) > 10000
+·GROUP BY employee.emp_no
+
+mysql> SELECT employees.emp_no, AVG(salaries.salary) as avg_salary FROM employees INNER JOIN salaries on salaries.emp_no = employees.emp_no GROUP BY employees.emp_no having AVG(salaries.salary) > 10000;
+
+
+
+
 
 
 mysql> select * from salaries where salary % 2 = 0 and to_date = '9999-01-01';
