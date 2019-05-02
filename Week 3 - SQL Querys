@@ -12,6 +12,12 @@ mysql> select * from employees inner join salaries on employees.emp_no = salarie
 
 Write a SQL that returns the employee name and title for all employees with even number as actual salary (to_date is 9999-01-01)
 
+mysql> select employees.emp_no, employees.first_name, employees.last_name, titles.title, salaries.salary, salaries.to_date from employees inner join (titles inner join salaries on salaries.emp_no = titles.emp_no) on employees.emp_no = titles.emp_no where  salaries.salary % 2 = 0 and salaries.to_date = '9999-01-01';
+
+
+
+
+
 mysql> select * from salaries where salary % 2 = 0 and to_date = '9999-01-01';
 
 mysql> select employees.first_name, employees.last_name, titles.title from employees inner join titles on employees.emp_no = titles.emp_no;
@@ -19,6 +25,8 @@ mysql> select employees.first_name, employees.last_name, titles.title from emplo
 mysql> select salary from salaries where to_date = '9999-01-01';
 
 mysql> select employees.emp_no, employees.first_name, employees.last_name, titles.title, salaries.salary from employees inner join (titles inner join salaries on salaries.emp_no = titles.emp_no) on employees.emp_no = titles.emp_no;
+
+mysql> select employees.emp_no, employees.first_name, employees.last_name, titles.title, salaries.salary from employees inner join (titles inner join salaries on salaries.emp_no = titles.emp_no) on employees.emp_no = titles.emp_no where  salaries.salary % 2 = 0;
 
 Does not work:
 mysql> select * from employees inner join salaries on employees.emp_no = salaries.emp_no where salary = (select salary from salaries where salary % 2 = 0 and to_date = '9999-01-01');
