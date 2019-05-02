@@ -1,7 +1,5 @@
 Write a SQL query to get the third highest salary of an employee from employee_table 
 
-mysql> select * from employees inner join salaries on employees.emp_no = salaries.emp_no;
-
 mysql> select * from employees inner join salaries on employees.emp_no = salaries.emp_no where salary = (select salary from salaries order by salary desc limit 2, 1);
 +--------+------------+------------+-----------+--------+------------+--------+--------+------------+------------+
 | emp_no | birth_date | first_name | last_name | gender | hire_date  | emp_no | salary | from_date  | to_date    |
@@ -39,18 +37,3 @@ mysql> SELECT employees.emp_no, AVG(salaries.salary) as avg_salary FROM employee
 
 
 
-
-
-
-mysql> select * from salaries where salary % 2 = 0 and to_date = '9999-01-01';
-
-mysql> select employees.first_name, employees.last_name, titles.title from employees inner join titles on employees.emp_no = titles.emp_no;
-
-mysql> select salary from salaries where to_date = '9999-01-01';
-
-mysql> select employees.emp_no, employees.first_name, employees.last_name, titles.title, salaries.salary from employees inner join (titles inner join salaries on salaries.emp_no = titles.emp_no) on employees.emp_no = titles.emp_no;
-
-mysql> select employees.emp_no, employees.first_name, employees.last_name, titles.title, salaries.salary from employees inner join (titles inner join salaries on salaries.emp_no = titles.emp_no) on employees.emp_no = titles.emp_no where  salaries.salary % 2 = 0;
-
-Does not work:
-mysql> select * from employees inner join salaries on employees.emp_no = salaries.emp_no where salary = (select salary from salaries where salary % 2 = 0 and to_date = '9999-01-01');
