@@ -1,0 +1,13 @@
+See the link below to the article I found:
+https://www.johndcook.com/blog/2009/07/06/brewer-cap-theorem-base/
+
+Here are my thoughts on the article:
+Every week I try and find an article that is linked to the material you thought us in class. 
+I know the article is a bit dated, but it breaks down very nicely the difference between ACID vs BASE Data properties.
+ACID
+I like the example the article gives about purchasing an item online and not having to lockdown the database to process the transaction. 
+Or listing the amount of items in inventory on an ecommerce website, the article explains that the information provided is probably delayed (cached data).
+BASE
+The article also explains base and how it is applied in accounting software where they close the month with accruals (estimations), and the rest of the data comes in later.
+What was also interesting is the article said that you can violate different properties of ACID and BASE, therefore I guess these are more guidelines than anything else.
+
