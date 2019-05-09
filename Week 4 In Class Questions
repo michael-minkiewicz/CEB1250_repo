@@ -1,0 +1,53 @@
+Which file structure will be more close to a relational database?
+
+Delimited (CSV files)
+
+Is AVRO the same thing as JSON, what is the difference?
+
+More information is contained AVRO than JSON
+AVRO has more metadata describing the data
+(no column value, also protocol communication)
+
+What is the difference between PARQUET and a delimited file type?
+
+Parquet is more efficient
+Parquet has a complex nested structure with lower storage costs
+Parquet also has a better compression therefore shines with bigger data sets.
+
+Which kind of compression algorithm allows to consume data using parallel processing?
+
+bzip2 
+
+Define a scenario where ACID properties are needed, enlist 3 reasons why.
+
+1 - no tolerance to error
+2 - consistancy
+3 - speed is not critical in the process
+
+Definie a scenario where BASE properties are needed, enlist 3 reasons why.
+
+1 - High speed of processing
+2 - Tolerance for errors
+3 - Flexibility & accepts data that is not consistant
+4 - avoid deadlock or system slowdowns
+
+
+Your client wants to find potential clients based on their locations or interests, what would you suggest?
+
+Graph based
+
+You need to store the logs from your billing system in a way that they will become easy to access.
+
+Document based
+
+You want to analyze the most accessed site of your e-commerce platform over the time. Where would you store the data?
+
+Column based
+
+You want to store the inventory of your website contents per endpoints. The page contents will be labelled with the page endpoint accessed, for quick access. Which database solution you would choose?
+
+Key based
+
+You have to store financial information about your
+
+Relational DB due to complexity
