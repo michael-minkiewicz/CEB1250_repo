@@ -1,0 +1,18 @@
+See the link below to the article:
+https://towardsdatascience.com/cap-theorem-and-distributed-database-management-systems-5c2be977950e
+
+Here are my thoughts on the article:
+
+Props to Sabrina Marchand for finding this article.
+This article is cool because it covers material we saw in class this past week therefore great to strengthen my understanding.
+
+The article covers the CAP theorem on how a trade off must be made for distributed database systems only 2 of the following can be achieved: Consistency, Availability, Partition Tolerance.
+
+The article breaks down the elements of the Theorem with cool visual examples to undertstand each condition.
+Partition Tolerance: network can sustain failure but will not affect the entire network (ie: 1 node failure, the system will continue to operate)
+Consistency: when a transaction is started it is completed, if inconsistent, the whole transaction is rolled back.
+Availability: System is always operational, if 2 transactions are submitted at the sametime we dont know which one will be the output.
+
+To conclude in an ideal world one would want Availability, Consistency, & Partition Tolerance, however that does not exist in real life.
+Therefore need to have a tradeoff based on what the clients 2 most important needs are out of Availability, Consistency, & Partition Tolerance.
+This article is a great recap on the material we saw this week.
