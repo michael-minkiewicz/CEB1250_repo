@@ -1,0 +1,43 @@
+Why CRISP-DM is necessary?
+Framework (Step by step approach)
+Checklist to get the business problem resolved ( gives insights to a problem)
+
+A company is using OCR (Optical Character Recognition) to be able to store into a database their physical documents inventory. The focus is to have data integrity, even if it costs to not be available all the time. Please inform which CAP subdomain and technology it could be choose.
+CP (Consistency - Partition Tolerance
+Type of Database: Document (MongoDB)
+
+A company needs to store all the analytical interaction data of an e-commerce platform. Due the to process the data on a streaming mode, the system needs to be available all the time even if it costs the data consistency. Please inform which CAP subdomain and technology it could be choose.
+AP (Availability - Partition Tolerance)
+Type of Database: Couch DB
+
+You was called to create an MDM (Master Data Management) platform to be used on fraud cases. This data will be used as referential data to cross validate with the clients interactions. It needs to be consistent and available. Please inform which CAP subdomain and technology it could be choose.
+CA (Consistency - Availability)
+Type of Database: SQL Server
+
+Give extra examples of business problems for each of CAP subdomains
+NA - open end questions our project we will consider the CAP for our project
+
+
+Problem1
+Servers generate a large number of events (i.e. logging,) that contain useful information about their operation including errors, warnings, and users behaviour. Choose a solution to store this data focusing on the optimal data retrieval.
+CAP: AP
+Storage: SSD
+Temperature: WARM
+Technology: Cassandra
+
+
+Problem 2
+In today’s world, a variation of content is available for the users for ingesting. Also, the variation of application clients, such as a browser, mobile, and so on, where each client needs the same content in different formats. Users not only munch content but also produce a variety of content in a huge volume with a high speed, such as tweets, Facebook posts, images, blogging, and much more. Propose a solution focusing on time series analytics on massive amount of data.
+CAP: CP
+Storage: HDD (SSD if the client has cash to use both)
+Temperature: Cold (Warm)
+Technology: MongoDB
+
+
+Problem 3
+Your data scientist is doing a semantic analysis based on entity extraction process (a type of natural language processing or NLP) that can be combined with other tools to extract simple facts or assertions made within a document. For having a better performance on its models, you were asked to define the storage solution focused on optimal data retrieval.
+CAP: AP
+Storage: SSD (RAM for analytical portion)
+Temperature: Warm
+Technology: Cassandra
+
