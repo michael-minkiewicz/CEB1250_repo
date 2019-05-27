@@ -1,29 +1,43 @@
 List all types of databases that we have seem so far, giving utilisation examples
-
+Relational: Banking
+Key Value: Authentification server ecommerce
+Document: invoices; library of events
+Columnar: historical analysis
+Graph: Social Media
 
 
 What CAP stands for? Cite each subgroup with a scenario example on when to use each
-
+CAP: Consistency; Availability; Partition-Tolerance
+CA (Consistency; Availability): Banking
+CP (Consistency;Partition-Tolerance): Different Server Sessions
+AP (Availability; Partition-Tolerance): Stock Market
 
 
 Give a business scenario where Base properties are important, give another for Acid
-
+BASE: Streaming; trackers
+ACID: Banking
 
 
 List the types of file structures, mentioning the best use cases
-
+Parquet; AVRO; CSV; JSON
+Parquet & AVRO are best for Big  Data
 
 
 Which types of joins exists on a relational database
-
+Left Join
+Right Join
+Full Outer Join
+Inner Join
 
 
 When Data Manipulation Language is used? How is it different than Data Definition Language?
-
+Manipulation: working with the data; manipulating the data
+Data Definition: define the structure of the data we are using
 
 
 What is the difference between a datawarehouse and a transactional database?
-
+Datawarehouse: stores the data and focuses on the specific business domains needs
+Transactiional Database: no time variance, it is event based.
 
 
 In pairs define other examples of realtime, near realtime and batch examples
