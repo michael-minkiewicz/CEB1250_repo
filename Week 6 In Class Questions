@@ -41,11 +41,20 @@ Transactiional Database: no time variance, it is event based.
 
 
 In pairs define other examples of realtime, near realtime and batch examples
-
+real time: radar system
+near real time:  An example of near real-time processing is the production of operational intelligence, which is a combination of data processing and CEP. CEP is Complete Event Processing, and it involves combining data from multiple sources in order to detect patterns. CEP is useful for identifying opportunities in the data sets (such as sales leads) as well as threats (detecting an intruder in the network).
+batch: records of accounting transactions (end of day dumps or monthly cycles)
 
 
 List the advantages and disadvantages of each type.
+Real time advantages: you have the data immediately
+Real time disadvantages: expensive and need strong equipment to perform this
 
+Near real time advantages: compromise between high cost and slower time to ingest the data; 
+Near real time disadvantages: Still need to wait a couple of minutes to obtain the data
+
+Batch Advantages: Lower costs to perform
+Batch Disadvantages: Slow time consuming
 
 
 What is devops and, from your perspective, which could be the gains of using it?
