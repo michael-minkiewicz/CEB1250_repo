@@ -54,21 +54,32 @@ Near real time advantages: compromise between high cost and slower time to inges
 Near real time disadvantages: Still need to wait a couple of minutes to obtain the data
 
 Batch Advantages: Lower costs to perform
-Batch Disadvantages: Slow time consuming
+Batch Disadvantages: Slow time to ingest the data because large files
 
 
 What is devops and, from your perspective, which could be the gains of using it?
-
-
+DevOps is a set of software development practices that combines software development (Dev) and information technology operations (Ops) to shorten the systems development life cycle while delivering features, fixes, and updates frequently in close alignment with business objectives
+gains: can make incremental changes (quick wins) in a short period of time that can help the business integrate a new fixes rather that run through a full business case that can take 1-2 years to deliver and once it it delivered it is already obsolete.
 
 Which are the devops phases?
-
+Plan; code; build & test
 
 
 What is continuous integration, why is it so important?
+Continuous integration is a DevOps software development practice where developers regularly merge their code changes into a central repository, after which automated builds and tests are run. 
+Continuous integration most often refers to the build or integration stage of the software release process and entails both an automation component (e.g. a CI or build service) and a cultural component (e.g. learning to integrate frequently). 
+The key goals of continuous integration are to find and address bugs quicker, improve software quality, and reduce the time it takes to validate and release new software updates.
+it is important because it creates the following benefits: 
+1) Improve Developer Productivity
+2) Find and Address Bugs Quicker
+3) Deliver Updates Faster
 
+Essentially it gets things done faster.
 
 
 Can we have devops mindset on a non agile project?
+no, if you are using devops mindset you need to deliver projects in an agile mindset, since with a devops mindset you are always making ocntinuous improvements and integrating them to the business.
+This allows you to continuously improvement the project, if you are not in agile mindset than you are back to big business case that you only deliver after 2 years, when the technology developed over 2 years is already obsolete.
+However, I believe you can use agile method on non dev opts projects, which will make a business run more efficienclty because people will be accountable at eveyr sprint.
 
 
