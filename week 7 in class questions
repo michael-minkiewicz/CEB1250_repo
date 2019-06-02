@@ -1,0 +1,717 @@
+Last login: Sun Jun  2 09:58:21 on console
+cce-fb105-05m:~ so_ndi$ ls
+Desktop		Documents	Downloads	Library		Movies		Music		Pictures	Public
+cce-fb105-05m:~ so_ndi$ cd Documents/
+cce-fb105-05m:Documents so_ndi$ ls
+cce-fb105-05m:Documents so_ndi$ cd ..
+cce-fb105-05m:~ so_ndi$ git clone https://github.com/danspaes/db-sandbox
+Cloning into 'db-sandbox'...
+remote: Enumerating objects: 7, done.
+remote: Counting objects: 100% (7/7), done.
+remote: Compressing objects: 100% (5/5), done.
+remote: Total 129 (delta 2), reused 6 (delta 2), pack-reused 122
+Receiving objects: 100% (129/129), 42.36 MiB | 1.16 MiB/s, done.
+Resolving deltas: 100% (24/24), done.
+cce-fb105-05m:~ so_ndi$ cd db-sandbox/
+cce-fb105-05m:db-sandbox so_ndi$ docker-compose up -d
+ERROR: Service 'mongo' depends on service 'spark' which is undefined.
+cce-fb105-05m:db-sandbox so_ndi$ ls
+README.md		cassandra		docker-compose.yml	mongo			mysql			neo4j			redis
+cce-fb105-05m:db-sandbox so_ndi$ vi docker-compose.yml 
+cce-fb105-05m:db-sandbox so_ndi$ docker-compose up -d
+ERROR: Couldn't connect to Docker daemon. You might need to start Docker for Mac.
+cce-fb105-05m:db-sandbox so_ndi$ docker service status
+
+Usage:	docker service COMMAND
+
+Manage services
+
+Commands:
+  create      Create a new service
+  inspect     Display detailed information on one or more services
+  logs        Fetch the logs of a service or task
+  ls          List services
+  ps          List the tasks of one or more services
+  rm          Remove one or more services
+  rollback    Revert changes to a service's configuration
+  scale       Scale one or multiple replicated services
+  update      Update a service
+
+Run 'docker service COMMAND --help' for more information on a command.
+cce-fb105-05m:db-sandbox so_ndi$ docker-compose up -d
+Creating network "db-sandbox_net" with the default driver
+Creating network "db-sandbox_default" with the default driver
+Pulling python (python:3.6-alpine)...
+3.6-alpine: Pulling from library/python
+e7c96db7181b: Pull complete
+799a5534f213: Pull complete
+4203dcf2ab0c: Pull complete
+e9524ee50040: Pull complete
+7cfa6613f80e: Pull complete
+Digest: sha256:3876a0c2e05949789788982673c0b7a4955939d9f044dd3da22afcdfd5f20ad1
+Status: Downloaded newer image for python:3.6-alpine
+Pulling mongo (mongo:4.0.5-xenial)...
+4.0.5-xenial: Pulling from library/mongo
+7b722c1070cd: Pull complete
+5fbf74db61f1: Pull complete
+ed41cb72e5c9: Pull complete
+7ea47a67709e: Pull complete
+778aebe6fb26: Pull complete
+3b4b1e0b80ed: Pull complete
+844ccc42fe76: Pull complete
+eab01fe8ebf8: Pull complete
+e5758d5381b1: Pull complete
+a795f1f35522: Pull complete
+67bc6388d1cd: Pull complete
+89b55f4f3473: Pull complete
+10886b20b4fc: Pull complete
+Digest: sha256:80d6c9bee4f35f422995f23b0581ef8559d2ac0427ca72021e03d43818574443
+Status: Downloaded newer image for mongo:4.0.5-xenial
+Pulling mongo-express (mongo-express:0.49)...
+0.49: Pulling from library/mongo-express
+e7c96db7181b: Already exists
+5b5ce4d3d5f2: Pull complete
+ac289eff61bc: Pull complete
+e2d92f4bca99: Pull complete
+44d337cc6a45: Pull complete
+35fdf6932637: Pull complete
+67805f843cbd: Pull complete
+Digest: sha256:8ab56f850c65df7e8e13754754943470d02cc394138db4dedb24505da650ba35
+Status: Downloaded newer image for mongo-express:0.49
+Pulling mysql (danspaes/mysql-with-data:)...
+latest: Pulling from danspaes/mysql-with-data
+6ae821421a7d: Pull complete
+a9e976e3aa6d: Pull complete
+e3735e44a020: Pull complete
+bfd564e9483f: Pull complete
+df705f26e488: Pull complete
+0c5547f73d62: Pull complete
+f437382cf8a1: Pull complete
+b8e2d50f1513: Pull complete
+e2e3c9928180: Pull complete
+b60db6d282cd: Pull complete
+1d32deab69c6: Pull complete
+408a40cd2e9c: Pull complete
+e76944cabb2d: Pull complete
+Digest: sha256:bba4e27c95125d0a644f4cc8d2dd3a58c0abd1cbee2a6b98fbd4f36c1df4a1fc
+Status: Downloaded newer image for danspaes/mysql-with-data:latest
+Pulling redis (redis:5.0.3)...
+5.0.3: Pulling from library/redis
+f7e2b70d04ae: Pull complete
+421427137c28: Pull complete
+4af7ef63ef0f: Pull complete
+b858087b3517: Pull complete
+2aaf1944f5eb: Pull complete
+8270b5c7b90d: Pull complete
+Digest: sha256:4be7fdb131e76a6c6231e820c60b8b12938cf1ff3d437da4871b9b2440f4e385
+Status: Downloaded newer image for redis:5.0.3
+Pulling cassandra (cassandra:3.11)...
+3.11: Pulling from library/cassandra
+743f2d6c1f65: Pull complete
+91b971745fdb: Pull complete
+d2c58bc89be2: Pull complete
+5773937c64d7: Pull complete
+53160e5f53aa: Pull complete
+c0f114b4b464: Pull complete
+0df0185d9f8f: Pull complete
+e36b29b948cb: Pull complete
+15c9a5fc1937: Pull complete
+f19a905cff3c: Pull complete
+Digest: sha256:56b085130069466acbaf35d7329600bf540ca764ed089c3b8557a5a14100c4b2
+Status: Downloaded newer image for cassandra:3.11
+Pulling neo4j (neo4j:3.5.3)...
+3.5.3: Pulling from library/neo4j
+e7c96db7181b: Already exists
+f910a506b6cb: Pull complete
+b6abafe80f63: Pull complete
+b95a7fd32595: Pull complete
+91969b5dac12: Pull complete
+91c06602f601: Pull complete
+aab6dbc7cfff: Pull complete
+Digest: sha256:298b77caaeaee304bef7a8d1b28b8b140fd2da5e69db5a2fd803dd2d182e8968
+Status: Downloaded newer image for neo4j:3.5.3
+Creating python        ... done
+Creating mongo-express ... done
+Creating mongo         ... done
+Creating neo4j         ... done
+Creating cassandra     ... done
+Creating mysql         ... done
+Creating redis         ... done
+cce-fb105-05m:db-sandbox so_ndi$ docker logs cassandra
+CompilerOracle: dontinline org/apache/cassandra/db/Columns$Serializer.deserializeLargeSubset (Lorg/apache/cassandra/io/util/DataInputPlus;Lorg/apache/cassandra/db/Columns;I)Lorg/apache/cassandra/db/Columns;
+CompilerOracle: dontinline org/apache/cassandra/db/Columns$Serializer.serializeLargeSubset (Ljava/util/Collection;ILorg/apache/cassandra/db/Columns;ILorg/apache/cassandra/io/util/DataOutputPlus;)V
+CompilerOracle: dontinline org/apache/cassandra/db/Columns$Serializer.serializeLargeSubsetSize (Ljava/util/Collection;ILorg/apache/cassandra/db/Columns;I)I
+CompilerOracle: dontinline org/apache/cassandra/db/commitlog/AbstractCommitLogSegmentManager.advanceAllocatingFrom (Lorg/apache/cassandra/db/commitlog/CommitLogSegment;)V
+CompilerOracle: dontinline org/apache/cassandra/db/transform/BaseIterator.tryGetMoreContents ()Z
+CompilerOracle: dontinline org/apache/cassandra/db/transform/StoppingTransformation.stop ()V
+CompilerOracle: dontinline org/apache/cassandra/db/transform/StoppingTransformation.stopInPartition ()V
+CompilerOracle: dontinline org/apache/cassandra/io/util/BufferedDataOutputStreamPlus.doFlush (I)V
+CompilerOracle: dontinline org/apache/cassandra/io/util/BufferedDataOutputStreamPlus.writeExcessSlow ()V
+CompilerOracle: dontinline org/apache/cassandra/io/util/BufferedDataOutputStreamPlus.writeSlow (JI)V
+CompilerOracle: dontinline org/apache/cassandra/io/util/RebufferingInputStream.readPrimitiveSlowly (I)J
+CompilerOracle: inline org/apache/cassandra/db/rows/UnfilteredSerializer.serializeRowBody (Lorg/apache/cassandra/db/rows/Row;ILorg/apache/cassandra/db/SerializationHeader;Lorg/apache/cassandra/io/util/DataOutputPlus;)V
+CompilerOracle: inline org/apache/cassandra/io/util/Memory.checkBounds (JJ)V
+CompilerOracle: inline org/apache/cassandra/io/util/SafeMemory.checkBounds (JJ)V
+CompilerOracle: inline org/apache/cassandra/utils/AsymmetricOrdering.selectBoundary (Lorg/apache/cassandra/utils/AsymmetricOrdering/Op;II)I
+CompilerOracle: inline org/apache/cassandra/utils/AsymmetricOrdering.strictnessOfLessThan (Lorg/apache/cassandra/utils/AsymmetricOrdering/Op;)I
+CompilerOracle: inline org/apache/cassandra/utils/BloomFilter.indexes (Lorg/apache/cassandra/utils/IFilter/FilterKey;)[J
+CompilerOracle: inline org/apache/cassandra/utils/BloomFilter.setIndexes (JJIJ[J)V
+CompilerOracle: inline org/apache/cassandra/utils/ByteBufferUtil.compare (Ljava/nio/ByteBuffer;[B)I
+CompilerOracle: inline org/apache/cassandra/utils/ByteBufferUtil.compare ([BLjava/nio/ByteBuffer;)I
+CompilerOracle: inline org/apache/cassandra/utils/ByteBufferUtil.compareUnsigned (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)I
+CompilerOracle: inline org/apache/cassandra/utils/FastByteOperations$UnsafeOperations.compareTo (Ljava/lang/Object;JILjava/lang/Object;JI)I
+CompilerOracle: inline org/apache/cassandra/utils/FastByteOperations$UnsafeOperations.compareTo (Ljava/lang/Object;JILjava/nio/ByteBuffer;)I
+CompilerOracle: inline org/apache/cassandra/utils/FastByteOperations$UnsafeOperations.compareTo (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)I
+CompilerOracle: inline org/apache/cassandra/utils/vint/VIntCoding.encodeVInt (JI)[B
+INFO  [main] 2019-06-02 14:04:29,175 YamlConfigurationLoader.java:89 - Configuration location: file:/etc/cassandra/cassandra.yaml
+INFO  [main] 2019-06-02 14:04:32,143 Config.java:496 - Node configuration:[allocate_tokens_for_keyspace=null; authenticator=AllowAllAuthenticator; authorizer=AllowAllAuthorizer; auto_bootstrap=true; auto_snapshot=true; back_pressure_enabled=false; back_pressure_strategy=org.apache.cassandra.net.RateBasedBackPressure{high_ratio=0.9, factor=5, flow=FAST}; batch_size_fail_threshold_in_kb=50; batch_size_warn_threshold_in_kb=5; batchlog_replay_throttle_in_kb=1024; broadcast_address=171.69.1.5; broadcast_rpc_address=171.69.1.5; buffer_pool_use_heap_if_exhausted=true; cas_contention_timeout_in_ms=1000; cdc_enabled=false; cdc_free_space_check_interval_ms=250; cdc_raw_directory=null; cdc_total_space_in_mb=0; client_encryption_options=<REDACTED>; cluster_name=Test Cluster; column_index_cache_size_in_kb=2; column_index_size_in_kb=64; commit_failure_policy=stop; commitlog_compression=null; commitlog_directory=/var/lib/cassandra/commitlog; commitlog_max_compression_buffers_in_pool=3; commitlog_periodic_queue_size=-1; commitlog_segment_size_in_mb=32; commitlog_sync=periodic; commitlog_sync_batch_window_in_ms=NaN; commitlog_sync_period_in_ms=10000; commitlog_total_space_in_mb=null; compaction_large_partition_warning_threshold_mb=100; compaction_throughput_mb_per_sec=16; concurrent_compactors=null; concurrent_counter_writes=32; concurrent_materialized_view_writes=32; concurrent_reads=32; concurrent_replicates=null; concurrent_writes=32; counter_cache_keys_to_save=2147483647; counter_cache_save_period=7200; counter_cache_size_in_mb=null; counter_write_request_timeout_in_ms=5000; credentials_cache_max_entries=1000; credentials_update_interval_in_ms=-1; credentials_validity_in_ms=2000; cross_node_timeout=false; data_file_directories=[Ljava.lang.String;@6f3b5d16; disk_access_mode=auto; disk_failure_policy=stop; disk_optimization_estimate_percentile=0.95; disk_optimization_page_cross_chance=0.1; disk_optimization_strategy=ssd; dynamic_snitch=true; dynamic_snitch_badness_threshold=0.1; dynamic_snitch_reset_interval_in_ms=600000; dynamic_snitch_update_interval_in_ms=100; enable_materialized_views=true; enable_scripted_user_defined_functions=false; enable_user_defined_functions=false; enable_user_defined_functions_threads=true; encryption_options=null; endpoint_snitch=SimpleSnitch; file_cache_round_up=null; file_cache_size_in_mb=null; gc_log_threshold_in_ms=200; gc_warn_threshold_in_ms=1000; hinted_handoff_disabled_datacenters=[]; hinted_handoff_enabled=true; hinted_handoff_throttle_in_kb=1024; hints_compression=null; hints_directory=null; hints_flush_period_in_ms=10000; incremental_backups=false; index_interval=null; index_summary_capacity_in_mb=null; index_summary_resize_interval_in_minutes=60; initial_token=null; inter_dc_stream_throughput_outbound_megabits_per_sec=200; inter_dc_tcp_nodelay=false; internode_authenticator=null; internode_compression=dc; internode_recv_buff_size_in_bytes=0; internode_send_buff_size_in_bytes=0; key_cache_keys_to_save=2147483647; key_cache_save_period=14400; key_cache_size_in_mb=null; listen_address=171.69.1.5; listen_interface=null; listen_interface_prefer_ipv6=false; listen_on_broadcast_address=false; max_hint_window_in_ms=10800000; max_hints_delivery_threads=2; max_hints_file_size_in_mb=128; max_mutation_size_in_kb=null; max_streaming_retries=3; max_value_size_in_mb=256; memtable_allocation_type=heap_buffers; memtable_cleanup_threshold=null; memtable_flush_writers=0; memtable_heap_space_in_mb=null; memtable_offheap_space_in_mb=null; min_free_space_per_drive_in_mb=50; native_transport_flush_in_batches_legacy=true; native_transport_max_concurrent_connections=-1; native_transport_max_concurrent_connections_per_ip=-1; native_transport_max_frame_size_in_mb=256; native_transport_max_threads=128; native_transport_port=9042; native_transport_port_ssl=null; num_tokens=256; otc_backlog_expiration_interval_ms=200; otc_coalescing_enough_coalesced_messages=8; otc_coalescing_strategy=DISABLED; otc_coalescing_window_us=200; partitioner=org.apache.cassandra.dht.Murmur3Partitioner; permissions_cache_max_entries=1000; permissions_update_interval_in_ms=-1; permissions_validity_in_ms=2000; phi_convict_threshold=8.0; prepared_statements_cache_size_mb=null; range_request_timeout_in_ms=10000; read_request_timeout_in_ms=5000; request_scheduler=org.apache.cassandra.scheduler.NoScheduler; request_scheduler_id=null; request_scheduler_options=null; request_timeout_in_ms=10000; role_manager=CassandraRoleManager; roles_cache_max_entries=1000; roles_update_interval_in_ms=-1; roles_validity_in_ms=2000; row_cache_class_name=org.apache.cassandra.cache.OHCProvider; row_cache_keys_to_save=2147483647; row_cache_save_period=0; row_cache_size_in_mb=0; rpc_address=0.0.0.0; rpc_interface=null; rpc_interface_prefer_ipv6=false; rpc_keepalive=true; rpc_listen_backlog=50; rpc_max_threads=2147483647; rpc_min_threads=16; rpc_port=9160; rpc_recv_buff_size_in_bytes=null; rpc_send_buff_size_in_bytes=null; rpc_server_type=sync; saved_caches_directory=/var/lib/cassandra/saved_caches; seed_provider=org.apache.cassandra.locator.SimpleSeedProvider{seeds=171.69.1.5}; server_encryption_options=<REDACTED>; slow_query_log_timeout_in_ms=500; snapshot_before_compaction=false; ssl_storage_port=7001; sstable_preemptive_open_interval_in_mb=50; start_native_transport=true; start_rpc=false; storage_port=7000; stream_throughput_outbound_megabits_per_sec=200; streaming_keep_alive_period_in_secs=300; streaming_socket_timeout_in_ms=86400000; thrift_framed_transport_size_in_mb=15; thrift_max_message_length_in_mb=16; thrift_prepared_statements_cache_size_mb=null; tombstone_failure_threshold=100000; tombstone_warn_threshold=1000; tracetype_query_ttl=86400; tracetype_repair_ttl=604800; transparent_data_encryption_options=org.apache.cassandra.config.TransparentDataEncryptionOptions@78b1cc93; trickle_fsync=false; trickle_fsync_interval_in_kb=10240; truncate_request_timeout_in_ms=60000; unlogged_batch_across_partitions_warn_threshold=10; user_defined_function_fail_timeout=1500; user_defined_function_warn_timeout=500; user_function_timeout_policy=die; windows_timer_interval=1; write_request_timeout_in_ms=2000]
+INFO  [main] 2019-06-02 14:04:32,212 DatabaseDescriptor.java:373 - DiskAccessMode 'auto' determined to be mmap, indexAccessMode is mmap
+INFO  [main] 2019-06-02 14:04:32,243 DatabaseDescriptor.java:431 - Global memtable on-heap threshold is enabled at 243MB
+INFO  [main] 2019-06-02 14:04:32,243 DatabaseDescriptor.java:435 - Global memtable off-heap threshold is enabled at 243MB
+INFO  [main] 2019-06-02 14:04:33,166 RateBasedBackPressure.java:123 - Initialized back-pressure with high ratio: 0.9, factor: 5, flow: FAST, window size: 2000.
+INFO  [main] 2019-06-02 14:04:33,167 DatabaseDescriptor.java:735 - Back-pressure is disabled with strategy org.apache.cassandra.net.RateBasedBackPressure{high_ratio=0.9, factor=5, flow=FAST}.
+INFO  [main] 2019-06-02 14:04:33,636 JMXServerUtils.java:246 - Configured JMX server at: service:jmx:rmi://127.0.0.1/jndi/rmi://127.0.0.1:7199/jmxrmi
+INFO  [main] 2019-06-02 14:04:33,662 CassandraDaemon.java:476 - Hostname: cassandra
+INFO  [main] 2019-06-02 14:04:33,663 CassandraDaemon.java:483 - JVM vendor/version: OpenJDK 64-Bit Server VM/1.8.0_212
+INFO  [main] 2019-06-02 14:04:33,669 CassandraDaemon.java:484 - Heap size: 975.125MiB/975.125MiB
+INFO  [main] 2019-06-02 14:04:33,671 CassandraDaemon.java:489 - Code Cache Non-heap memory: init = 2555904(2496K) used = 4868480(4754K) committed = 4915200(4800K) max = 251658240(245760K)
+INFO  [main] 2019-06-02 14:04:33,672 CassandraDaemon.java:489 - Metaspace Non-heap memory: init = 0(0K) used = 18121240(17696K) committed = 18612224(18176K) max = -1(-1K)
+INFO  [main] 2019-06-02 14:04:33,683 CassandraDaemon.java:489 - Compressed Class Space Non-heap memory: init = 0(0K) used = 2190768(2139K) committed = 2359296(2304K) max = 1073741824(1048576K)
+INFO  [main] 2019-06-02 14:04:33,685 CassandraDaemon.java:489 - Par Eden Space Heap memory: init = 208928768(204032K) used = 104522736(102072K) committed = 208928768(204032K) max = 208928768(204032K)
+INFO  [main] 2019-06-02 14:04:33,685 CassandraDaemon.java:489 - Par Survivor Space Heap memory: init = 26083328(25472K) used = 0(0K) committed = 26083328(25472K) max = 26083328(25472K)
+INFO  [main] 2019-06-02 14:04:33,686 CassandraDaemon.java:489 - CMS Old Gen Heap memory: init = 787480576(769024K) used = 0(0K) committed = 787480576(769024K) max = 787480576(769024K)
+INFO  [main] 2019-06-02 14:04:33,686 CassandraDaemon.java:491 - Classpath: /etc/cassandra:/usr/share/cassandra/lib/HdrHistogram-2.1.9.jar:/usr/share/cassandra/lib/ST4-4.0.8.jar:/usr/share/cassandra/lib/airline-0.6.jar:/usr/share/cassandra/lib/antlr-runtime-3.5.2.jar:/usr/share/cassandra/lib/asm-5.0.4.jar:/usr/share/cassandra/lib/caffeine-2.2.6.jar:/usr/share/cassandra/lib/cassandra-driver-core-3.0.1-shaded.jar:/usr/share/cassandra/lib/commons-cli-1.1.jar:/usr/share/cassandra/lib/commons-codec-1.9.jar:/usr/share/cassandra/lib/commons-lang3-3.1.jar:/usr/share/cassandra/lib/commons-math3-3.2.jar:/usr/share/cassandra/lib/compress-lzf-0.8.4.jar:/usr/share/cassandra/lib/concurrent-trees-2.4.0.jar:/usr/share/cassandra/lib/concurrentlinkedhashmap-lru-1.4.jar:/usr/share/cassandra/lib/disruptor-3.0.1.jar:/usr/share/cassandra/lib/ecj-4.4.2.jar:/usr/share/cassandra/lib/guava-18.0.jar:/usr/share/cassandra/lib/high-scale-lib-1.0.6.jar:/usr/share/cassandra/lib/hppc-0.5.4.jar:/usr/share/cassandra/lib/jackson-core-asl-1.9.13.jar:/usr/share/cassandra/lib/jackson-mapper-asl-1.9.13.jar:/usr/share/cassandra/lib/jamm-0.3.0.jar:/usr/share/cassandra/lib/javax.inject.jar:/usr/share/cassandra/lib/jbcrypt-0.3m.jar:/usr/share/cassandra/lib/jcl-over-slf4j-1.7.7.jar:/usr/share/cassandra/lib/jctools-core-1.2.1.jar:/usr/share/cassandra/lib/jflex-1.6.0.jar:/usr/share/cassandra/lib/jna-4.2.2.jar:/usr/share/cassandra/lib/joda-time-2.4.jar:/usr/share/cassandra/lib/json-simple-1.1.jar:/usr/share/cassandra/lib/jstackjunit-0.0.1.jar:/usr/share/cassandra/lib/libthrift-0.9.2.jar:/usr/share/cassandra/lib/log4j-over-slf4j-1.7.7.jar:/usr/share/cassandra/lib/logback-classic-1.1.3.jar:/usr/share/cassandra/lib/logback-core-1.1.3.jar:/usr/share/cassandra/lib/lz4-1.3.0.jar:/usr/share/cassandra/lib/metrics-core-3.1.5.jar:/usr/share/cassandra/lib/metrics-jvm-3.1.5.jar:/usr/share/cassandra/lib/metrics-logback-3.1.5.jar:/usr/share/cassandra/lib/netty-all-4.0.44.Final.jar:/usr/share/cassandra/lib/ohc-core-0.4.4.jar:/usr/share/cassandra/lib/ohc-core-j8-0.4.4.jar:/usr/share/cassandra/lib/reporter-config-base-3.0.3.jar:/usr/share/cassandra/lib/reporter-config3-3.0.3.jar:/usr/share/cassandra/lib/sigar-1.6.4.jar:/usr/share/cassandra/lib/slf4j-api-1.7.7.jar:/usr/share/cassandra/lib/snakeyaml-1.11.jar:/usr/share/cassandra/lib/snappy-java-1.1.1.7.jar:/usr/share/cassandra/lib/snowball-stemmer-1.3.0.581.1.jar:/usr/share/cassandra/lib/stream-2.5.2.jar:/usr/share/cassandra/lib/thrift-server-0.3.7.jar:/usr/share/cassandra/apache-cassandra-3.11.4.jar:/usr/share/cassandra/apache-cassandra-thrift-3.11.4.jar:/usr/share/cassandra/apache-cassandra.jar:/usr/share/cassandra/stress.jar::/usr/share/cassandra/lib/jamm-0.3.0.jar
+INFO  [main] 2019-06-02 14:04:33,690 CassandraDaemon.java:493 - JVM Arguments: [-Xloggc:/var/log/cassandra/gc.log, -ea, -XX:+UseThreadPriorities, -XX:ThreadPriorityPolicy=42, -XX:+HeapDumpOnOutOfMemoryError, -Xss256k, -XX:StringTableSize=1000003, -XX:+AlwaysPreTouch, -XX:-UseBiasedLocking, -XX:+UseTLAB, -XX:+ResizeTLAB, -XX:+UseNUMA, -XX:+PerfDisableSharedMem, -Djava.net.preferIPv4Stack=true, -XX:+UseParNewGC, -XX:+UseConcMarkSweepGC, -XX:+CMSParallelRemarkEnabled, -XX:SurvivorRatio=8, -XX:MaxTenuringThreshold=1, -XX:CMSInitiatingOccupancyFraction=75, -XX:+UseCMSInitiatingOccupancyOnly, -XX:CMSWaitDuration=10000, -XX:+CMSParallelInitialMarkEnabled, -XX:+CMSEdenChunksRecordAlways, -XX:+CMSClassUnloadingEnabled, -XX:+PrintGCDetails, -XX:+PrintGCDateStamps, -XX:+PrintHeapAtGC, -XX:+PrintTenuringDistribution, -XX:+PrintGCApplicationStoppedTime, -XX:+PrintPromotionFailure, -XX:+UseGCLogFileRotation, -XX:NumberOfGCLogFiles=10, -XX:GCLogFileSize=10M, -Xms999M, -Xmx999M, -Xmn249M, -XX:+UseCondCardMark, -XX:CompileCommandFile=/etc/cassandra/hotspot_compiler, -javaagent:/usr/share/cassandra/lib/jamm-0.3.0.jar, -Dcassandra.jmx.local.port=7199, -Dcom.sun.management.jmxremote.authenticate=false, -Dcom.sun.management.jmxremote.password.file=/etc/cassandra/jmxremote.password, -Djava.library.path=/usr/share/cassandra/lib/sigar-bin, -Dcassandra.libjemalloc=/usr/lib/x86_64-linux-gnu/libjemalloc.so.1, -XX:OnOutOfMemoryError=kill -9 %p, -Dlogback.configurationFile=logback.xml, -Dcassandra.logdir=/var/log/cassandra, -Dcassandra.storagedir=/var/lib/cassandra, -Dcassandra-foreground=yes]
+WARN  [main] 2019-06-02 14:04:33,842 NativeLibrary.java:187 - Unable to lock JVM memory (ENOMEM). This can result in part of the JVM being swapped out, especially with mmapped I/O enabled. Increase RLIMIT_MEMLOCK or run Cassandra as root.
+INFO  [main] 2019-06-02 14:04:33,844 StartupChecks.java:140 - jemalloc seems to be preloaded from /usr/lib/x86_64-linux-gnu/libjemalloc.so.1
+WARN  [main] 2019-06-02 14:04:33,846 StartupChecks.java:169 - JMX is not enabled to receive remote connections. Please see cassandra-env.sh for more info.
+INFO  [main] 2019-06-02 14:04:33,857 SigarLibrary.java:44 - Initializing SIGAR library
+WARN  [main] 2019-06-02 14:04:33,905 SigarLibrary.java:174 - Cassandra server running in degraded mode. Is swap disabled? : false,  Address space adequate? : true,  nofile limit adequate? : true, nproc limit adequate? : true 
+WARN  [main] 2019-06-02 14:04:33,959 StartupChecks.java:311 - Maximum number of memory map areas per process (vm.max_map_count) 262144 is too low, recommended value: 1048575, you can change it with sysctl.
+WARN  [main] 2019-06-02 14:04:34,006 StartupChecks.java:332 - Directory /var/lib/cassandra/data doesn't exist
+WARN  [main] 2019-06-02 14:04:34,031 StartupChecks.java:332 - Directory /var/lib/cassandra/commitlog doesn't exist
+WARN  [main] 2019-06-02 14:04:34,036 StartupChecks.java:332 - Directory /var/lib/cassandra/saved_caches doesn't exist
+WARN  [main] 2019-06-02 14:04:34,042 StartupChecks.java:332 - Directory /var/lib/cassandra/hints doesn't exist
+INFO  [main] 2019-06-02 14:04:34,269 QueryProcessor.java:116 - Initialized prepared statement caches with 10 MB (native) and 10 MB (Thrift)
+INFO  [main] 2019-06-02 14:04:36,374 ColumnFamilyStore.java:430 - Initializing system.IndexInfo
+INFO  [main] 2019-06-02 14:04:41,440 ColumnFamilyStore.java:430 - Initializing system.batches
+INFO  [main] 2019-06-02 14:04:41,467 ColumnFamilyStore.java:430 - Initializing system.paxos
+INFO  [main] 2019-06-02 14:04:41,492 ColumnFamilyStore.java:430 - Initializing system.local
+INFO  [main] 2019-06-02 14:04:41,509 ColumnFamilyStore.java:430 - Initializing system.peers
+INFO  [main] 2019-06-02 14:04:41,528 ColumnFamilyStore.java:430 - Initializing system.peer_events
+INFO  [main] 2019-06-02 14:04:41,547 ColumnFamilyStore.java:430 - Initializing system.range_xfers
+INFO  [main] 2019-06-02 14:04:41,569 ColumnFamilyStore.java:430 - Initializing system.compaction_history
+INFO  [main] 2019-06-02 14:04:41,589 ColumnFamilyStore.java:430 - Initializing system.sstable_activity
+INFO  [main] 2019-06-02 14:04:41,617 ColumnFamilyStore.java:430 - Initializing system.size_estimates
+INFO  [main] 2019-06-02 14:04:41,639 ColumnFamilyStore.java:430 - Initializing system.available_ranges
+INFO  [main] 2019-06-02 14:04:41,674 ColumnFamilyStore.java:430 - Initializing system.transferred_ranges
+INFO  [main] 2019-06-02 14:04:41,707 ColumnFamilyStore.java:430 - Initializing system.views_builds_in_progress
+INFO  [main] 2019-06-02 14:04:41,736 ColumnFamilyStore.java:430 - Initializing system.built_views
+INFO  [main] 2019-06-02 14:04:41,779 ColumnFamilyStore.java:430 - Initializing system.hints
+INFO  [main] 2019-06-02 14:04:41,808 ColumnFamilyStore.java:430 - Initializing system.batchlog
+INFO  [main] 2019-06-02 14:04:41,829 ColumnFamilyStore.java:430 - Initializing system.prepared_statements
+INFO  [main] 2019-06-02 14:04:41,881 ColumnFamilyStore.java:430 - Initializing system.schema_keyspaces
+INFO  [main] 2019-06-02 14:04:41,977 ColumnFamilyStore.java:430 - Initializing system.schema_columnfamilies
+INFO  [main] 2019-06-02 14:04:42,010 ColumnFamilyStore.java:430 - Initializing system.schema_columns
+INFO  [main] 2019-06-02 14:04:42,054 ColumnFamilyStore.java:430 - Initializing system.schema_triggers
+INFO  [main] 2019-06-02 14:04:42,082 ColumnFamilyStore.java:430 - Initializing system.schema_usertypes
+INFO  [main] 2019-06-02 14:04:42,107 ColumnFamilyStore.java:430 - Initializing system.schema_functions
+INFO  [main] 2019-06-02 14:04:42,154 ColumnFamilyStore.java:430 - Initializing system.schema_aggregates
+INFO  [main] 2019-06-02 14:04:42,167 ViewManager.java:137 - Not submitting build tasks for views in keyspace system as storage service is not initialized
+INFO  [main] 2019-06-02 14:04:42,348 ApproximateTime.java:44 - Scheduling approximate time-check task with a precision of 10 milliseconds
+INFO  [main] 2019-06-02 14:04:42,451 ColumnFamilyStore.java:430 - Initializing system_schema.keyspaces
+INFO  [main] 2019-06-02 14:04:42,473 ColumnFamilyStore.java:430 - Initializing system_schema.tables
+INFO  [main] 2019-06-02 14:04:42,504 ColumnFamilyStore.java:430 - Initializing system_schema.columns
+INFO  [main] 2019-06-02 14:04:42,536 ColumnFamilyStore.java:430 - Initializing system_schema.triggers
+INFO  [main] 2019-06-02 14:04:42,590 ColumnFamilyStore.java:430 - Initializing system_schema.dropped_columns
+INFO  [main] 2019-06-02 14:04:42,640 ColumnFamilyStore.java:430 - Initializing system_schema.views
+INFO  [main] 2019-06-02 14:04:42,681 ColumnFamilyStore.java:430 - Initializing system_schema.types
+INFO  [main] 2019-06-02 14:04:42,709 ColumnFamilyStore.java:430 - Initializing system_schema.functions
+INFO  [main] 2019-06-02 14:04:42,732 ColumnFamilyStore.java:430 - Initializing system_schema.aggregates
+INFO  [main] 2019-06-02 14:04:42,763 ColumnFamilyStore.java:430 - Initializing system_schema.indexes
+INFO  [main] 2019-06-02 14:04:42,773 ViewManager.java:137 - Not submitting build tasks for views in keyspace system_schema as storage service is not initialized
+INFO  [MemtableFlushWriter:1] 2019-06-02 14:04:43,766 CacheService.java:100 - Initializing key cache with capacity of 48 MBs.
+INFO  [MemtableFlushWriter:1] 2019-06-02 14:04:43,808 CacheService.java:122 - Initializing row cache with capacity of 0 MBs
+INFO  [MemtableFlushWriter:1] 2019-06-02 14:04:43,811 CacheService.java:151 - Initializing counter cache with capacity of 24 MBs
+INFO  [MemtableFlushWriter:1] 2019-06-02 14:04:43,812 CacheService.java:162 - Scheduling counter cache save to every 7200 seconds (going to save all keys).
+INFO  [CompactionExecutor:2] 2019-06-02 14:04:44,655 BufferPool.java:230 - Global buffer pool is enabled, when pool is exhausted (max is 243.000MiB) it will allocate on heap
+INFO  [main] 2019-06-02 14:04:44,826 StorageService.java:619 - Populating token metadata from system tables
+INFO  [main] 2019-06-02 14:04:44,961 StorageService.java:626 - Token metadata: 
+INFO  [pool-3-thread-1] 2019-06-02 14:04:45,344 AutoSavingCache.java:174 - Completed loading (13 ms; 6 keys) KeyCache cache
+INFO  [main] 2019-06-02 14:04:45,427 CommitLog.java:142 - No commitlog files found; skipping replay
+INFO  [main] 2019-06-02 14:04:45,429 StorageService.java:619 - Populating token metadata from system tables
+INFO  [main] 2019-06-02 14:04:45,488 StorageService.java:626 - Token metadata: 
+INFO  [main] 2019-06-02 14:04:45,744 QueryProcessor.java:163 - Preloaded 0 prepared statements
+INFO  [main] 2019-06-02 14:04:45,747 StorageService.java:637 - Cassandra version: 3.11.4
+INFO  [main] 2019-06-02 14:04:45,748 StorageService.java:638 - Thrift API version: 20.1.0
+INFO  [main] 2019-06-02 14:04:45,749 StorageService.java:639 - CQL supported versions: 3.4.4 (default: 3.4.4)
+INFO  [main] 2019-06-02 14:04:45,751 StorageService.java:641 - Native protocol supported versions: 3/v3, 4/v4, 5/v5-beta (default: 4/v4)
+INFO  [main] 2019-06-02 14:04:45,904 IndexSummaryManager.java:80 - Initializing index summary manager with a memory pool size of 48 MB and a resize interval of 60 minutes
+INFO  [main] 2019-06-02 14:04:45,974 MessagingService.java:750 - Starting Messaging Service on /171.69.1.5:7000 (eth0)
+WARN  [main] 2019-06-02 14:04:45,981 SystemKeyspace.java:1087 - No host ID found, created 4a4cfdfa-c72f-47de-b69e-5f822f777796 (Note: This should happen exactly once per node).
+INFO  [main] 2019-06-02 14:04:46,050 StorageService.java:569 - Unable to gossip with any peers but continuing anyway since node is in its own seed list
+INFO  [main] 2019-06-02 14:04:46,091 StorageService.java:723 - Loading persisted ring state
+INFO  [main] 2019-06-02 14:04:46,092 StorageService.java:841 - Starting up server gossip
+INFO  [main] 2019-06-02 14:04:46,461 StorageService.java:902 - This node will not auto bootstrap because it is configured to be a seed node.
+INFO  [main] 2019-06-02 14:04:46,490 BootStrapper.java:228 - Generated random tokens. tokens are [-1154289957171823514, 6857624266571038672, -1001755377605457111, 6454801352177953403, 3778508210294371369, 6618346856755862005, -36982941893276431, 4881911601441324981, 623322267893000382, -8631304952108320677, -6627947877613169280, 4359163049945456601, 7334299534102469939, 7465892500174022663, 6715748559273593031, -8759739251883329142, 8878719303184293809, 6105933913862593509, -2689337654591643156, 9105499382414990928, 6808490090905028831, 141808659367067210, -4001403014929054066, 2629164707838702003, 2587757899410229971, 2468165584266264290, -1357016207283808373, -1874108491362929600, 5971830384117918457, -3766313184960338419, -4707569873360842164, -579069962555502879, 1422535681077268933, -567581883358250388, -750849715723597974, 8781170756884295674, -544378654513160133, 7270721524967445095, 4296401390626541398, 5482106170632432987, 1835631921679188132, 2789928768768617109, -6312622403772377961, 7279361680454906536, 8104204842679403931, 8666767897320486381, -7608238380740212531, 5732313390044609430, 3827926620857487358, -8136737823024580778, -1675042751774102747, -1395391828887191839, 3252637695195727541, -5668329988148994963, -8290887900978051981, -2095181305244012739, -794498325952909972, -3140322132035756300, -7604187603977592785, 6740368406311231776, 3774680659983821879, -2952889956530904673, 7589292392613924529, -7889251354758459296, 7034738905371604131, -8428261913791511689, 621065337985644892, 4840733360321743548, -215318114162887848, -2875698748029261034, -7370536065225131182, -4370145842695232575, 8158355538007956172, -2443968997912888066, -2497876716880956414, -8630732270305108760, -3216228137269845224, 1881036447610302286, -4160817792335011309, 585701655306187488, -6982805134179954305, 3931309994642110779, 269385520107540589, 2483021281647170646, -8212428715157642094, -1940720793117073056, -4391111510798164181, -6844407278096679188, 9044045278186487006, -3670812737910078097, -4089420250506777270, 407984847877379096, -6165101884107007613, -4128162338163582755, 5227543956380111882, -5937537594334409882, 7356417113044914688, 9062951389414415354, -5189167652285005008, -7818862848672017557, -1240889049342760544, 6303857725474145769, -3113920143612326139, 6627070832557176633, 3659997825814352597, -5695260733596111265, 8144199396670782302, -2947869482017560689, -8326416444130790053, -6441988109135006158, 2022043857671070323, -7826789847495234080, -4513072758761319654, -4226198427070462105, 3708926990561555636, 2582220235527556802, 3037363819993110215, -7615300266794014304, -1520516590571314233, -2779432346786082311, 4521178191691171805, -8673848808851227603, -2825004479645658759, -7194765014692772186, -2457407815257845448, 5634224401891289493, 8732529595452242649, -809309749394374964, 8994252745098189123, 3666640820565346090, -5309041101407152944, -1428499478783802059, -6678369164574569352, -8733709211590391307, 5592123393836915154, -4622403270342714672, 6937211050987482067, 2614081490146014261, 2326921524254290624, -5016428526734608054, 168897254906707990, -8675552693740631278, -6679479543472888303, -5930200362496313810, -6906658772169712507, 3275247572780980487, -607688771690430070, 2409822564661468867, -5587483261785393143, -7352180372098791333, -5732374501196338649, 5444112082093184829, -6384586177116304498, -3077938179025087203, -25240553889320380, -5671837967933031773, -1563571064460433748, 6037089113756767432, 4663307845004417532, 453119772112738419, 6321361275694534863, -7440234886642350566, 9170494331195824565, -3151229754411192693, -9130787826887725010, 2768032503492213936, -4039790725712986630, 309968695874351332, 2497282040974501181, 1115806450952332045, -6216145677068024085, -3971092008072471262, 374175376947893873, -5782474805473735567, 9123782798217024614, 8526210565184482422, 6924694003658877364, 6716075510925633074, 1083826940825402688, 5253584073938393026, -4781433831453226848, -7030892150911160554, -7164553458287695100, 346144723835889773, -5709185595793249351, 5829581338453434120, -3483261300326138711, 8802958847307553565, 3404831003443488641, 1246490999564589821, -5597860619628771236, -2716461943962169398, 7081248976154419301, 5087726802627746652, 9026284870118457449, -131099321111769938, -631872528292091350, 2680795677515389049, 648268224659613161, 6967193618974995159, 1832028197957938883, 5646577171844266331, 8832728946694901293, -3589000314898078422, -3341728463838462835, 3218940950534834977, 4780760976962161370, 4569955211155304600, -4575039571822078805, -2367905704707841663, 6942696716978616021, -676112054392156413, 5155439107681896481, -2425933560338478866, -6937611920021006564, -1403980461463400224, -1961631526296987860, -5053629012159474439, -6237806308736589570, -7921079431010208921, 1390146323248181056, -4624866147192131531, -8529813075548564133, 2051807804357076357, -6598240188941319330, -3935229709333875622, -9211050292601823145, 8780627847314746500, -6710758685264995081, -606093143937308688, -5545292105422452111, -8554103231895734722, -3105248463392670219, -56028937675844161, -6189777752558456296, -1241513758855900296, 3813302230183545437, -890170356432277008, -6885146330235554312, 7245475234233838953, -1515645789565283670, 2005312787402751972, 1798501219104413353, -7585984305864689875, -4592112250836352629, 7056336998171614310, 7361786598461095841, -3657312330116409911, 8685703017274622142, 1911414696853426318, 7663247741326511902, 7376254797928372307, -4010105862007453932, 8451087108851152568, -1153820608664689590, 6331602424409092893]
+INFO  [main] 2019-06-02 14:04:46,503 MigrationManager.java:337 - Create new Keyspace: KeyspaceMetadata{name=system_traces, params=KeyspaceParams{durable_writes=true, replication=ReplicationParams{class=org.apache.cassandra.locator.SimpleStrategy, replication_factor=2}}, tables=[org.apache.cassandra.config.CFMetaData@4f11b4f2[cfId=c5e99f16-8677-3914-b17e-960613512345,ksName=system_traces,cfName=sessions,flags=[COMPOUND],params=TableParams{comment=tracing sessions, read_repair_chance=0.0, dclocal_read_repair_chance=0.0, bloom_filter_fp_chance=0.01, crc_check_chance=1.0, gc_grace_seconds=0, default_time_to_live=0, memtable_flush_period_in_ms=3600000, min_index_interval=128, max_index_interval=2048, speculative_retry=99PERCENTILE, caching={'keys' : 'ALL', 'rows_per_partition' : 'NONE'}, compaction=CompactionParams{class=org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy, options={min_threshold=4, max_threshold=32}}, compression=org.apache.cassandra.schema.CompressionParams@2ae5eaf4, extensions={}, cdc=false},comparator=comparator(),partitionColumns=[[] | [client command coordinator duration request started_at parameters]],partitionKeyColumns=[session_id],clusteringColumns=[],keyValidator=org.apache.cassandra.db.marshal.UUIDType,columnMetadata=[client, command, session_id, coordinator, request, started_at, duration, parameters],droppedColumns={},triggers=[],indexes=[]], org.apache.cassandra.config.CFMetaData@e6b9fd9[cfId=8826e8e9-e16a-3728-8753-3bc1fc713c25,ksName=system_traces,cfName=events,flags=[COMPOUND],params=TableParams{comment=tracing events, read_repair_chance=0.0, dclocal_read_repair_chance=0.0, bloom_filter_fp_chance=0.01, crc_check_chance=1.0, gc_grace_seconds=0, default_time_to_live=0, memtable_flush_period_in_ms=3600000, min_index_interval=128, max_index_interval=2048, speculative_retry=99PERCENTILE, caching={'keys' : 'ALL', 'rows_per_partition' : 'NONE'}, compaction=CompactionParams{class=org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy, options={min_threshold=4, max_threshold=32}}, compression=org.apache.cassandra.schema.CompressionParams@2ae5eaf4, extensions={}, cdc=false},comparator=comparator(org.apache.cassandra.db.marshal.TimeUUIDType),partitionColumns=[[] | [activity source source_elapsed thread]],partitionKeyColumns=[session_id],clusteringColumns=[event_id],keyValidator=org.apache.cassandra.db.marshal.UUIDType,columnMetadata=[activity, event_id, session_id, source, thread, source_elapsed],droppedColumns={},triggers=[],indexes=[]]], views=[], functions=[], types=[]}
+INFO  [MigrationStage:1] 2019-06-02 14:04:47,417 ViewManager.java:137 - Not submitting build tasks for views in keyspace system_traces as storage service is not initialized
+INFO  [MigrationStage:1] 2019-06-02 14:04:47,437 ColumnFamilyStore.java:430 - Initializing system_traces.events
+INFO  [MigrationStage:1] 2019-06-02 14:04:47,455 ColumnFamilyStore.java:430 - Initializing system_traces.sessions
+INFO  [main] 2019-06-02 14:04:47,500 MigrationManager.java:337 - Create new Keyspace: KeyspaceMetadata{name=system_distributed, params=KeyspaceParams{durable_writes=true, replication=ReplicationParams{class=org.apache.cassandra.locator.SimpleStrategy, replication_factor=3}}, tables=[org.apache.cassandra.config.CFMetaData@dd90e43[cfId=759fffad-624b-3181-80ee-fa9a52d1f627,ksName=system_distributed,cfName=repair_history,flags=[COMPOUND],params=TableParams{comment=Repair history, read_repair_chance=0.0, dclocal_read_repair_chance=0.0, bloom_filter_fp_chance=0.01, crc_check_chance=1.0, gc_grace_seconds=864000, default_time_to_live=0, memtable_flush_period_in_ms=3600000, min_index_interval=128, max_index_interval=2048, speculative_retry=99PERCENTILE, caching={'keys' : 'ALL', 'rows_per_partition' : 'NONE'}, compaction=CompactionParams{class=org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy, options={min_threshold=4, max_threshold=32}}, compression=org.apache.cassandra.schema.CompressionParams@2ae5eaf4, extensions={}, cdc=false},comparator=comparator(org.apache.cassandra.db.marshal.TimeUUIDType),partitionColumns=[[] | [coordinator exception_message exception_stacktrace finished_at parent_id range_begin range_end started_at status participants]],partitionKeyColumns=[keyspace_name, columnfamily_name],clusteringColumns=[id],keyValidator=org.apache.cassandra.db.marshal.CompositeType(org.apache.cassandra.db.marshal.UTF8Type,org.apache.cassandra.db.marshal.UTF8Type),columnMetadata=[status, id, coordinator, finished_at, participants, exception_stacktrace, parent_id, range_end, range_begin, exception_message, keyspace_name, started_at, columnfamily_name],droppedColumns={},triggers=[],indexes=[]], org.apache.cassandra.config.CFMetaData@530ac703[cfId=deabd734-b99d-3b9c-92e5-fd92eb5abf14,ksName=system_distributed,cfName=parent_repair_history,flags=[COMPOUND],params=TableParams{comment=Repair history, read_repair_chance=0.0, dclocal_read_repair_chance=0.0, bloom_filter_fp_chance=0.01, crc_check_chance=1.0, gc_grace_seconds=864000, default_time_to_live=0, memtable_flush_period_in_ms=3600000, min_index_interval=128, max_index_interval=2048, speculative_retry=99PERCENTILE, caching={'keys' : 'ALL', 'rows_per_partition' : 'NONE'}, compaction=CompactionParams{class=org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy, options={min_threshold=4, max_threshold=32}}, compression=org.apache.cassandra.schema.CompressionParams@2ae5eaf4, extensions={}, cdc=false},comparator=comparator(),partitionColumns=[[] | [exception_message exception_stacktrace finished_at keyspace_name started_at columnfamily_names options requested_ranges successful_ranges]],partitionKeyColumns=[parent_id],clusteringColumns=[],keyValidator=org.apache.cassandra.db.marshal.TimeUUIDType,columnMetadata=[requested_ranges, exception_message, keyspace_name, successful_ranges, started_at, finished_at, options, exception_stacktrace, parent_id, columnfamily_names],droppedColumns={},triggers=[],indexes=[]], org.apache.cassandra.config.CFMetaData@7a106b98[cfId=5582b59f-8e4e-35e1-b913-3acada51eb04,ksName=system_distributed,cfName=view_build_status,flags=[COMPOUND],params=TableParams{comment=Materialized View build status, read_repair_chance=0.0, dclocal_read_repair_chance=0.0, bloom_filter_fp_chance=0.01, crc_check_chance=1.0, gc_grace_seconds=864000, default_time_to_live=0, memtable_flush_period_in_ms=3600000, min_index_interval=128, max_index_interval=2048, speculative_retry=99PERCENTILE, caching={'keys' : 'ALL', 'rows_per_partition' : 'NONE'}, compaction=CompactionParams{class=org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy, options={min_threshold=4, max_threshold=32}}, compression=org.apache.cassandra.schema.CompressionParams@2ae5eaf4, extensions={}, cdc=false},comparator=comparator(org.apache.cassandra.db.marshal.UUIDType),partitionColumns=[[] | [status]],partitionKeyColumns=[keyspace_name, view_name],clusteringColumns=[host_id],keyValidator=org.apache.cassandra.db.marshal.CompositeType(org.apache.cassandra.db.marshal.UTF8Type,org.apache.cassandra.db.marshal.UTF8Type),columnMetadata=[view_name, status, keyspace_name, host_id],droppedColumns={},triggers=[],indexes=[]]], views=[], functions=[], types=[]}
+INFO  [MigrationStage:1] 2019-06-02 14:04:47,824 ViewManager.java:137 - Not submitting build tasks for views in keyspace system_distributed as storage service is not initialized
+INFO  [MigrationStage:1] 2019-06-02 14:04:47,842 ColumnFamilyStore.java:430 - Initializing system_distributed.parent_repair_history
+INFO  [MigrationStage:1] 2019-06-02 14:04:47,859 ColumnFamilyStore.java:430 - Initializing system_distributed.repair_history
+INFO  [MigrationStage:1] 2019-06-02 14:04:47,877 ColumnFamilyStore.java:430 - Initializing system_distributed.view_build_status
+INFO  [main] 2019-06-02 14:04:47,909 StorageService.java:1483 - JOINING: Finish joining ring
+INFO  [main] 2019-06-02 14:04:48,168 MigrationManager.java:337 - Create new Keyspace: KeyspaceMetadata{name=system_auth, params=KeyspaceParams{durable_writes=true, replication=ReplicationParams{class=org.apache.cassandra.locator.SimpleStrategy, replication_factor=1}}, tables=[org.apache.cassandra.config.CFMetaData@53d4d939[cfId=5bc52802-de25-35ed-aeab-188eecebb090,ksName=system_auth,cfName=roles,flags=[COMPOUND],params=TableParams{comment=role definitions, read_repair_chance=0.0, dclocal_read_repair_chance=0.0, bloom_filter_fp_chance=0.01, crc_check_chance=1.0, gc_grace_seconds=7776000, default_time_to_live=0, memtable_flush_period_in_ms=3600000, min_index_interval=128, max_index_interval=2048, speculative_retry=99PERCENTILE, caching={'keys' : 'ALL', 'rows_per_partition' : 'NONE'}, compaction=CompactionParams{class=org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy, options={min_threshold=4, max_threshold=32}}, compression=org.apache.cassandra.schema.CompressionParams@2ae5eaf4, extensions={}, cdc=false},comparator=comparator(),partitionColumns=[[] | [can_login is_superuser salted_hash member_of]],partitionKeyColumns=[role],clusteringColumns=[],keyValidator=org.apache.cassandra.db.marshal.UTF8Type,columnMetadata=[salted_hash, member_of, role, can_login, is_superuser],droppedColumns={},triggers=[],indexes=[]], org.apache.cassandra.config.CFMetaData@6aa04385[cfId=0ecdaa87-f8fb-3e60-88d1-74fb36fe5c0d,ksName=system_auth,cfName=role_members,flags=[COMPOUND],params=TableParams{comment=role memberships lookup table, read_repair_chance=0.0, dclocal_read_repair_chance=0.0, bloom_filter_fp_chance=0.01, crc_check_chance=1.0, gc_grace_seconds=7776000, default_time_to_live=0, memtable_flush_period_in_ms=3600000, min_index_interval=128, max_index_interval=2048, speculative_retry=99PERCENTILE, caching={'keys' : 'ALL', 'rows_per_partition' : 'NONE'}, compaction=CompactionParams{class=org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy, options={min_threshold=4, max_threshold=32}}, compression=org.apache.cassandra.schema.CompressionParams@2ae5eaf4, extensions={}, cdc=false},comparator=comparator(org.apache.cassandra.db.marshal.UTF8Type),partitionColumns=[[] | []],partitionKeyColumns=[role],clusteringColumns=[member],keyValidator=org.apache.cassandra.db.marshal.UTF8Type,columnMetadata=[role, member],droppedColumns={},triggers=[],indexes=[]], org.apache.cassandra.config.CFMetaData@1586d03[cfId=3afbe79f-2194-31a7-add7-f5ab90d8ec9c,ksName=system_auth,cfName=role_permissions,flags=[COMPOUND],params=TableParams{comment=permissions granted to db roles, read_repair_chance=0.0, dclocal_read_repair_chance=0.0, bloom_filter_fp_chance=0.01, crc_check_chance=1.0, gc_grace_seconds=7776000, default_time_to_live=0, memtable_flush_period_in_ms=3600000, min_index_interval=128, max_index_interval=2048, speculative_retry=99PERCENTILE, caching={'keys' : 'ALL', 'rows_per_partition' : 'NONE'}, compaction=CompactionParams{class=org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy, options={min_threshold=4, max_threshold=32}}, compression=org.apache.cassandra.schema.CompressionParams@2ae5eaf4, extensions={}, cdc=false},comparator=comparator(org.apache.cassandra.db.marshal.UTF8Type),partitionColumns=[[] | [permissions]],partitionKeyColumns=[role],clusteringColumns=[resource],keyValidator=org.apache.cassandra.db.marshal.UTF8Type,columnMetadata=[role, resource, permissions],droppedColumns={},triggers=[],indexes=[]], org.apache.cassandra.config.CFMetaData@3130c428[cfId=5f2fbdad-91f1-3946-bd25-d5da3a5c35ec,ksName=system_auth,cfName=resource_role_permissons_index,flags=[COMPOUND],params=TableParams{comment=index of db roles with permissions granted on a resource, read_repair_chance=0.0, dclocal_read_repair_chance=0.0, bloom_filter_fp_chance=0.01, crc_check_chance=1.0, gc_grace_seconds=7776000, default_time_to_live=0, memtable_flush_period_in_ms=3600000, min_index_interval=128, max_index_interval=2048, speculative_retry=99PERCENTILE, caching={'keys' : 'ALL', 'rows_per_partition' : 'NONE'}, compaction=CompactionParams{class=org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy, options={min_threshold=4, max_threshold=32}}, compression=org.apache.cassandra.schema.CompressionParams@2ae5eaf4, extensions={}, cdc=false},comparator=comparator(org.apache.cassandra.db.marshal.UTF8Type),partitionColumns=[[] | []],partitionKeyColumns=[resource],clusteringColumns=[role],keyValidator=org.apache.cassandra.db.marshal.UTF8Type,columnMetadata=[resource, role],droppedColumns={},triggers=[],indexes=[]]], views=[], functions=[], types=[]}
+INFO  [MigrationStage:1] 2019-06-02 14:04:48,810 ViewManager.java:137 - Not submitting build tasks for views in keyspace system_auth as storage service is not initialized
+INFO  [MigrationStage:1] 2019-06-02 14:04:48,831 ColumnFamilyStore.java:430 - Initializing system_auth.resource_role_permissons_index
+INFO  [MigrationStage:1] 2019-06-02 14:04:48,867 ColumnFamilyStore.java:430 - Initializing system_auth.role_members
+INFO  [MigrationStage:1] 2019-06-02 14:04:48,913 ColumnFamilyStore.java:430 - Initializing system_auth.role_permissions
+INFO  [MigrationStage:1] 2019-06-02 14:04:48,950 ColumnFamilyStore.java:430 - Initializing system_auth.roles
+INFO  [main] 2019-06-02 14:04:49,001 Gossiper.java:1684 - Waiting for gossip to settle...
+INFO  [main] 2019-06-02 14:04:56,993 Gossiper.java:1715 - No gossip backlog; proceeding
+INFO  [main] 2019-06-02 14:04:57,318 NativeTransportService.java:70 - Netty using native Epoll event loop
+INFO  [main] 2019-06-02 14:04:57,384 Server.java:155 - Using Netty Version: [netty-buffer=netty-buffer-4.0.44.Final.452812a, netty-codec=netty-codec-4.0.44.Final.452812a, netty-codec-haproxy=netty-codec-haproxy-4.0.44.Final.452812a, netty-codec-http=netty-codec-http-4.0.44.Final.452812a, netty-codec-socks=netty-codec-socks-4.0.44.Final.452812a, netty-common=netty-common-4.0.44.Final.452812a, netty-handler=netty-handler-4.0.44.Final.452812a, netty-tcnative=netty-tcnative-1.1.33.Fork26.142ecbb, netty-transport=netty-transport-4.0.44.Final.452812a, netty-transport-native-epoll=netty-transport-native-epoll-4.0.44.Final.452812a, netty-transport-rxtx=netty-transport-rxtx-4.0.44.Final.452812a, netty-transport-sctp=netty-transport-sctp-4.0.44.Final.452812a, netty-transport-udt=netty-transport-udt-4.0.44.Final.452812a]
+INFO  [main] 2019-06-02 14:04:57,384 Server.java:156 - Starting listening for CQL clients on /0.0.0.0:9042 (unencrypted)...
+INFO  [main] 2019-06-02 14:04:57,433 CassandraDaemon.java:556 - Not starting RPC server as requested. Use JMX (StorageService->startRPCServer()) or nodetool (enablethrift) to start it
+INFO  [OptionalTasks:1] 2019-06-02 14:04:59,140 CassandraRoleManager.java:356 - Created default superuser role 'cassandra'
+cce-fb105-05m:db-sandbox so_ndi$ docker exec -it mongo /bin/bash
+root@mongo:/# mongoimport-host=127.0.0.1 -jsonArray -u root -p 'example' --autentificationdatabase admin -d movies -c american_movies /data/db/movies.json
+bash: mongoimport-host=127.0.0.1: command not found
+root@mongo:/# mongoimport-host=127.0.0.1 -jsonArray -u root -p 'example' --autentificationdatabase admin -d movies -c american_movies /opt/mongo/movies.json
+bash: mongoimport-host=127.0.0.1: command not found
+root@mongo:/# host=127.0.0.jsonArray -u root --jsonArray --authenticationDatabase admin -d movies -c american_movies /opt/mongo/movies.jsonexamplep 1 mongoimport 
+bash: -u: command not found
+root@mongo:/# 
+root@mongo:/# 
+root@mongo:/# 
+root@mongo:/# 
+root@mongo:/# 
+root@mongo:/# 
+root@mongo:/# 
+root@mongo:/# 
+root@mongo:/# mongoimport -host=127.0.0.1 -jsonArray -u root -p 'example' --authenticationDatabase admin -d movies -c american_movies /opt/mongo/movies.json        
+2019-06-02T14:19:41.207+0000	error parsing command line options: invalid argument for flag `-j, --numInsertionWorkers' (expected int): strconv.ParseInt: parsing "sonArray": invalid syntax
+2019-06-02T14:19:41.211+0000	try 'mongoimport --help' for more information
+root@mongo:/# mongoimport -host=127.0.0.1 --jsonArray -u root -p 'example' --authenticationDatabase admin -d movies -c american_movies /opt/mongo/movies.json
+2019-06-02T14:28:37.635+0000	Failed: open /opt/mongo/movies.json: no such file or directory
+2019-06-02T14:28:37.635+0000	imported 0 documents
+root@mongo:/# ls -l
+total 180
+drwxr-xr-x   2 root root   4096 Jan 22 19:22 bin
+drwxr-xr-x   2 root root   4096 Apr 12  2016 boot
+drwxr-xr-x   4 root root   4096 Jan 23 02:03 data
+drwxr-xr-x   5 root root    340 Jun  2 14:04 dev
+drwxr-xr-x   2 root root   4096 Jan 23 02:02 docker-entrypoint-initdb.d
+drwxr-xr-x   1 root root   4096 Jun  2 14:04 etc
+drwxr-xr-x   2 root root   4096 Apr 12  2016 home
+-rw-r--r--   1 root root 106999 Jan 23 02:02 js-yaml.js
+drwxr-xr-x   1 root root   4096 Sep 13  2015 lib
+drwxr-xr-x   2 root root   4096 Jan 22 19:22 lib64
+drwxr-xr-x   2 root root   4096 Jan 22 19:22 media
+drwxr-xr-x   2 root root   4096 Jan 22 19:22 mnt
+drwxr-xr-x   2 root root   4096 Jan 22 19:22 opt
+dr-xr-xr-x 199 root root      0 Jun  2 14:04 proc
+drwx------   1 root root   4096 Jan 23 02:02 root
+drwxr-xr-x   1 root root   4096 Jan 22 19:22 run
+drwxr-xr-x   1 root root   4096 Jan 22 22:48 sbin
+drwxr-xr-x   2 root root   4096 Jan 22 19:22 srv
+dr-xr-xr-x  13 root root      0 Jun  2 14:04 sys
+drwxrwxrwt   1 root root   4096 Jun  2 14:04 tmp
+drwxr-xr-x   1 root root   4096 Jan 22 19:22 usr
+drwxr-xr-x   1 root root   4096 Jan 22 19:22 var
+root@mongo:/# pwd    
+/
+root@mongo:/# ls -l data/db/  
+total 3696
+-rw------- 1 root    root      45 Jun  2 14:04 WiredTiger
+-rw------- 1 root    root      21 Jun  2 14:04 WiredTiger.lock
+-rw------- 1 root    root    1064 Jun  2 14:06 WiredTiger.turtle
+-rw------- 1 root    root   69632 Jun  2 14:07 WiredTiger.wt
+-rw------- 1 root    root    4096 Jun  2 14:04 WiredTigerLAS.wt
+-rw------- 1 root    root   16384 Jun  2 14:04 _mdb_catalog.wt
+-rw------- 1 root    root   16384 Jun  2 14:04 collection-0--7070652261844181199.wt
+-rw------- 1 root    root   32768 Jun  2 14:06 collection-2--7070652261844181199.wt
+-rw------- 1 root    root    4096 Jun  2 14:04 collection-4--7070652261844181199.wt
+-rw------- 1 root    root   16384 Jun  2 14:04 collection-7--7070652261844181199.wt
+drwx------ 5 root    root     170 Jun  2 14:30 diagnostic.data
+-rw------- 1 root    root   16384 Jun  2 14:04 index-1--7070652261844181199.wt
+-rw------- 1 root    root   32768 Jun  2 14:06 index-3--7070652261844181199.wt
+-rw------- 1 root    root    4096 Jun  2 14:04 index-5--7070652261844181199.wt
+-rw------- 1 root    root    4096 Jun  2 14:05 index-6--7070652261844181199.wt
+-rw------- 1 root    root   16384 Jun  2 14:04 index-8--7070652261844181199.wt
+-rw------- 1 root    root   16384 Jun  2 14:04 index-9--7070652261844181199.wt
+drwx------ 5 root    root     170 Jun  2 14:05 journal
+-rw------- 1 root    root       2 Jun  2 14:04 mongod.lock
+-rw-r--r-- 1 mongodb root 3386161 Jun  2 14:01 movies.json
+-rw-r--r-- 1 mongodb root   47846 Jun  2 14:01 shows.json
+-rw------- 1 root    root   32768 Jun  2 14:07 sizeStorer.wt
+-rw------- 1 root    root     114 Jun  2 14:04 storage.bson
+root@mongo:/# mongoimport -host=127.0.0.1 --jsonArray -u root -p 'example' --authenticationDatabase admin -d movies -c american_movies /data/db/mongo/movies.json
+2019-06-02T14:30:30.848+0000	Failed: open /data/db/mongo/movies.json: no such file or directory
+2019-06-02T14:30:30.848+0000	imported 0 documents
+root@mongo:/# mongoimport --host=127.0.0.1 --jsonArray -u root -p 'example' --authenticationDatabase admin -d movies -c american_movies /opt/mongo/movies.json
+2019-06-02T14:33:51.851+0000	Failed: open /opt/mongo/movies.json: no such file or directory
+2019-06-02T14:33:51.851+0000	imported 0 documents
+root@mongo:/# mongoimport --host=127.0.0.1 --jsonArray -u root -p 'example' --authenticationDatabase admin -d movies -c american_movies /data/db/movies.json
+2019-06-02T14:34:03.012+0000	connected to: 127.0.0.1
+2019-06-02T14:34:03.274+0000	imported 28795 documents
+root@mongo:/# mongo -u root -p 'example' -- authenticationDatabase admin  
+MongoDB shell version v4.0.5
+connecting to: mongodb://127.0.0.1:27017/authenticationDatabase?gssapiServiceName=mongodb
+2019-06-02T14:37:02.359+0000 E QUERY    [js] Error: Authentication failed. :
+connect@src/mongo/shell/mongo.js:328:13
+@(connect):1:6
+exception: connect failed
+root@mongo:/# mongo -u root -p 'example' --authenticationDatabase admin  
+MongoDB shell version v4.0.5
+connecting to: mongodb://127.0.0.1:27017/?authSource=admin&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("58ce1245-b955-4de8-9bb6-d878692022a0") }
+MongoDB server version: 4.0.5
+Welcome to the MongoDB shell.
+For interactive help, type "help".
+For more comprehensive documentation, see
+	http://docs.mongodb.org/
+Questions? Try the support group
+	http://groups.google.com/group/mongodb-user
+---
+Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+and anyone you share the URL with. MongoDB may use this information to make product
+improvements and to suggest MongoDB products and deployment options to you.
+
+To enable free monitoring, run the following command: db.enableFreeMonitoring()
+To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+---
+
+> use reviews
+switched to db reviews
+> db.user.insertOne( {name:"";email_address:""})
+2019-06-02T14:45:35.000+0000 E QUERY    [js] SyntaxError: missing } after property list @(shell):1:27
+> db.user.insertOne( {name:"";email_address:""})
+2019-06-02T14:45:56.017+0000 E QUERY    [js] SyntaxError: missing } after property list @(shell):1:27
+> db.user.insertOne( {
+... name:"",
+... email_address:""
+... } )
+{
+	"acknowledged" : true,
+	"insertedId" : ObjectId("5cf3e15ff29e6386133dc5c4")
+}
+> db.article.insertOne( {
+... name:"",
+... webpage:"",
+... text:"",
+... 
+... } )
+{
+	"acknowledged" : true,
+	"insertedId" : ObjectId("5cf3e3c9f29e6386133dc5c5")
+}
+> show collections
+article
+user
+> db.article.insertOne( {
+... name:"",
+... webpage:"",
+... text:"",
+... publish_date: new Date,
+... 
+... 
+> db.article.insertOne( {
+... name:"",
+... webpage:"",
+... text:"",
+... publish_date: new Date(),
+... })
+{
+	"acknowledged" : true,
+	"insertedId" : ObjectId("5cf3e6b9f29e6386133dc5c6")
+}
+> db.user.insertMany( [
+... { name: “mike”, email_address: “mike@gmail.com” },
+... { name: “m”, email_address: “m@gmail.com” },
+... { name: “steve”, email_address: “s@gmail.com” },
+... { name: “tanev”, email_address: “t@gmail.com” },
+... { name: “yuri”, email_address: “y@gmail.com” },
+... { name: “uuuu”, email_address: “u@gmail.com” },
+... { name: “icarus”, email_address: “i@gmail.com” },
+... { name: “oswald”, email_address: “o@gmail.com” },
+... { name: “cynthia”, email_address: “c@gmail.com” },
+... { name: “andre”, email_address: “a@gmail.com” },
+... ])
+2019-06-02T15:21:13.929+0000 E QUERY    [js] SyntaxError: illegal character @(shell):2:8
+> db.user.insertMany( [
+... { name: “mike”, email_address: “mike@gmail.com” },
+... { name: “m”, email_address: “m@gmail.com” },
+... { name: “steve”, email_address: “s@gmail.com” },
+... { name: “tanev”, email_address: “t@gmail.com” },
+... { name: “yuri”, email_address: “y@gmail.com” },
+... { name: “uuuu”, email_address: “u@gmail.com” },
+... { name: “icarus”, email_address: “i@gmail.com” },
+... { name: “oswald”, email_address: “o@gmail.com” },
+... { name: “cynthia”, email_address: “c@gmail.com” },
+... { name: “andre”, email_address: “a@gmail.com” },
+... ] )
+2019-06-02T15:23:21.005+0000 E QUERY    [js] SyntaxError: illegal character @(shell):2:8
+> db.user.insertMany( [
+... { name: “mike”, email_address: “mike@gmail.com” },
+... { name: “m”, email_address: “m@gmail.com” },
+... ] )
+2019-06-02T15:23:55.851+0000 E QUERY    [js] SyntaxError: illegal character @(shell):2:8
+> db.user.insertMany( [
+... { name: “mike”, email_address: “mike@gmail.com” },
+... { name: “m”, email_address: “m@gmail.com” },
+... { name: “steve”, email_address: “s@gmail.com” },
+... { name: “tanev”, email_address: “t@gmail.com” },
+... { name: “yuri”, email_address: “y@gmail.com” },
+... { name: “uuuu”, email_address: “u@gmail.com” },
+... { name: “icarus”, email_address: “i@gmail.com” },
+... { name: “oswald”, email_address: “o@gmail.com” },
+... { name: “cynthia”, email_address: “c@gmail.com” },
+... { name: “andre”, email_address: “a@gmail.com” }
+... ] )
+2019-06-02T15:24:39.277+0000 E QUERY    [js] SyntaxError: illegal character @(shell):2:8
+> db.user.insertMany( [
+... { name: "mike", email_address: "mike@gmail.com" }
+... ] )
+{
+	"acknowledged" : true,
+	"insertedIds" : [
+		ObjectId("5cf3ea91f29e6386133dc5c7")
+	]
+}
+> db.user.insertMany( [
+... { name: "mike", email_address: "mike@gmail.com" },
+... { name: "m", email_address: "m@gmail.com" },
+... { name: "steve”, email_address: "s@gmail.com" },
+2019-06-02T15:31:37.405+0000 E QUERY    [js] SyntaxError: missing } after property list @(shell):4:33
+> { name: "tanev”, email_address: "t@gmail.com" },
+2019-06-02T15:31:37.406+0000 E QUERY    [js] SyntaxError: missing ; before statement @(shell):1:33
+> { name: "yuri”, email_address: "y@gmail.com" },
+2019-06-02T15:31:37.406+0000 E QUERY    [js] SyntaxError: missing ; before statement @(shell):1:32
+> { name: "uuuu”, email_address: "u@gmail.com" },
+2019-06-02T15:31:37.407+0000 E QUERY    [js] SyntaxError: missing ; before statement @(shell):1:32
+> { name: "icarus”, email_address: "i@gmail.com" },
+2019-06-02T15:31:37.407+0000 E QUERY    [js] SyntaxError: missing ; before statement @(shell):1:34
+> { name: "oswald" email_address: "o@gmail.com" },
+... { name: "cynthia" email_address: "c@gmail.com" },
+... { name: "andre" email_address: "a@gmail.com" }
+2019-06-02T15:31:37.408+0000 E QUERY    [js] SyntaxError: missing ; before statement @(shell):1:17
+> ])db.user.insertMany( [
+2019-06-02T15:31:40.582+0000 E QUERY    [js] SyntaxError: expected expression, got ']' @(shell):1:0
+> { name: "mike", email_address: "mike@gmail.com" },
+... { name: "m", email_address: "m@gmail.com" },
+... { name: "steve”, email_address: "s@gmail.com" },
+2019-06-02T15:31:40.583+0000 E QUERY    [js] SyntaxError: missing ; before statement @(shell):1:29
+> { name: "tanev”, email_address: "t@gmail.com" },
+2019-06-02T15:31:40.583+0000 E QUERY    [js] SyntaxError: missing ; before statement @(shell):1:33
+> { name: "yuri”, email_address: "y@gmail.com" },
+2019-06-02T15:31:40.584+0000 E QUERY    [js] SyntaxError: missing ; before statement @(shell):1:32
+> { name: "uuuu”, email_address: "u@gmail.com" },
+2019-06-02T15:31:40.584+0000 E QUERY    [js] SyntaxError: missing ; before statement @(shell):1:32
+> { name: "icarus”, email_address: "i@gmail.com" },
+2019-06-02T15:31:40.585+0000 E QUERY    [js] SyntaxError: missing ; before statement @(shell):1:34
+> { name: "oswald" email_address: "o@gmail.com" },
+... { name: "cynthia" email_address: "c@gmail.com" },
+... { name: "andre" email_address: "a@gmail.com" }
+2019-06-02T15:31:40.585+0000 E QUERY    [js] SyntaxError: missing ; before statement @(shell):1:17
+> ])
+2019-06-02T15:31:44.151+0000 E QUERY    [js] SyntaxError: expected expression, got ']' @(shell):1:0
+> db.user.insertMany( [
+... { name: "mike", email_address: "mike@gmail.com" },
+... { name: "m", email_address: "m@gmail.com" },
+... { name: "steve”, email_address: "s@gmail.com" },
+2019-06-02T15:31:52.961+0000 E QUERY    [js] SyntaxError: missing } after property list @(shell):4:33
+> { name: "tanev”, email_address: "t@gmail.com" },
+2019-06-02T15:31:52.962+0000 E QUERY    [js] SyntaxError: missing ; before statement @(shell):1:33
+> { name: "yuri”, email_address: "y@gmail.com" },
+2019-06-02T15:31:52.963+0000 E QUERY    [js] SyntaxError: missing ; before statement @(shell):1:32
+> { name: "uuuu”, email_address: "u@gmail.com" },
+2019-06-02T15:31:52.964+0000 E QUERY    [js] SyntaxError: missing ; before statement @(shell):1:32
+> { name: "icarus”, email_address: "i@gmail.com" },
+2019-06-02T15:31:52.965+0000 E QUERY    [js] SyntaxError: missing ; before statement @(shell):1:34
+> { name: "oswald" email_address: "o@gmail.com" },
+... { name: "cynthia" email_address: "c@gmail.com" },
+... { name: "andre" email_address: "a@gmail.com" }
+2019-06-02T15:31:52.966+0000 E QUERY    [js] SyntaxError: missing ; before statement @(shell):1:17
+> ])
+2019-06-02T15:32:12.687+0000 E QUERY    [js] SyntaxError: expected expression, got ']' @(shell):1:0
+> db.user.insertMany( [
+... { name: "mike", email_address: "mike@gmail.com" },
+... { name: "m", email_address: "m@gmail.com" },
+... { name: "steve”, email_address: "s@gmail.com" },
+2019-06-02T15:32:16.172+0000 E QUERY    [js] SyntaxError: missing } after property list @(shell):4:33
+> { name: "tanev”, email_address: "t@gmail.com" },
+2019-06-02T15:32:16.173+0000 E QUERY    [js] SyntaxError: missing ; before statement @(shell):1:33
+> { name: "yuri”, email_address: "y@gmail.com" },
+2019-06-02T15:32:16.174+0000 E QUERY    [js] SyntaxError: missing ; before statement @(shell):1:32
+> { name: "uuuu”, email_address: "u@gmail.com" },
+2019-06-02T15:32:16.175+0000 E QUERY    [js] SyntaxError: missing ; before statement @(shell):1:32
+> { name: "icarus”, email_address: "i@gmail.com" },
+2019-06-02T15:32:16.176+0000 E QUERY    [js] SyntaxError: missing ; before statement @(shell):1:34
+> { name: "oswald" email_address: "o@gmail.com" },
+... { name: "cynthia" email_address: "c@gmail.com" },
+... { name: "andre" email_address: "a@gmail.com" }
+2019-06-02T15:32:16.177+0000 E QUERY    [js] SyntaxError: missing ; before statement @(shell):1:17
+> ])db.user.insertMany( [
+2019-06-02T15:32:41.117+0000 E QUERY    [js] SyntaxError: expected expression, got ']' @(shell):1:0
+> 
+> 
+> 
+> 
+> 
+> 
+> db.user.insertMany( [
+... { name: "mike", email_address: "mike@gmail.com" },
+... { name: "m", email_address: "m@gmail.com" },
+... { name: "steve”, email_address: "s@gmail.com" }
+2019-06-02T15:33:09.420+0000 E QUERY    [js] SyntaxError: missing } after property list @(shell):4:33
+> db.user.insertMany( [ { name: "mike", email_address: "mike@gmail.com" }, { name: "m", email_address: "m@gmail.com" }, { name: "steve”, email_address: "s@gmail.com" }])
+2019-06-02T15:33:29.132+0000 E QUERY    [js] SyntaxError: missing } after property list @(shell):1:151
+> db.user.insertMany( [ { name: "mike", email_address: "mike@gmail.com" }, { name: "m", email_address: "m@gmail.com" }])
+{
+	"acknowledged" : true,
+	"insertedIds" : [
+		ObjectId("5cf3ec6cf29e6386133dc5c8"),
+		ObjectId("5cf3ec6cf29e6386133dc5c9")
+	]
+}
+> db.user.insertMany( [
+... { name: "tanev”, email_address: "t@gmail.com" },
+2019-06-02T15:34:58.742+0000 E QUERY    [js] SyntaxError: missing } after property list @(shell):2:33
+> { name: "yuri”, email_address: "y@gmail.com" },
+2019-06-02T15:34:58.744+0000 E QUERY    [js] SyntaxError: missing ; before statement @(shell):1:32
+> { name: "uuuu”, email_address: "u@gmail.com" },
+2019-06-02T15:34:58.745+0000 E QUERY    [js] SyntaxError: missing ; before statement @(shell):1:32
+> { name: "icarus”, email_address: "i@gmail.com" },
+2019-06-02T15:34:58.746+0000 E QUERY    [js] SyntaxError: missing ; before statement @(shell):1:34
+> { name: "oswald" email_address: "o@gmail.com" },
+... { name: "cynthia" email_address: "c@gmail.com" },
+... { name: "andre" email_address: "a@gmail.com" } ])
+2019-06-02T15:35:21.607+0000 E QUERY    [js] SyntaxError: missing ; before statement @(shell):1:17
+> { name: "oswald" email_address: "o@gmail.com" }, { name: "cynthia" email_address: "c@gmail.com" }, { name: "andre" email_address: "a@gmail.com" } ])
+2019-06-02T15:35:34.416+0000 E QUERY    [js] SyntaxError: missing ; before statement @(shell):1:17
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> db.user.insertMany( [
+... { name: "tanev”, email_address: "t@gmail.com" },
+2019-06-02T15:36:03.201+0000 E QUERY    [js] SyntaxError: missing } after property list @(shell):2:33
+> { name: "yuri”, email_address: "y@gmail.com" },
+2019-06-02T15:36:03.203+0000 E QUERY    [js] SyntaxError: missing ; before statement @(shell):1:32
+> { name: "uuuu”, email_address: "u@gmail.com" },
+2019-06-02T15:36:03.204+0000 E QUERY    [js] SyntaxError: missing ; before statement @(shell):1:32
+> { name: "icarus”, email_address: "i@gmail.com" }
+2019-06-02T15:36:57.755+0000 E QUERY    [js] SyntaxError: missing ; before statement @(shell):1:34
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> db.user.insertMany( [
+... { name: "steve”, email_address: "s@gmail.com" },{ name: "tanev”, email_address: "t@gmail.com" },{ name: "yuri”, email_address: "y@gmail.com" },{ name: "uuuu”, email_address: "u@gmail.com" },{ name: "icarus”, email_address: "i@gmail.com" },{ name: "oswald" email_address: "o@gmail.com" },{ name: "cynthia" email_address: "c@gmail.com" },{ name: "andre" email_address: "a@gmail.com" }])
+2019-06-02T15:37:14.751+0000 E QUERY    [js] SyntaxError: missing } after property list @(shell):2:33
+> db.user.insertMany( [ { name: "steve”, email_address: "s@gmail.com" },{ name: "tanev”, email_address: "t@gmail.com" },{ name: "yuri”, email_address: "y@gmail.com" },{ name: "uuuu”, email_address: "u@gmail.com" },{ name: "icarus”, email_address: "i@gmail.com" }])
+2019-06-02T15:38:03.511+0000 E QUERY    [js] SyntaxError: missing } after property list @(shell):1:55
+> db.user.insertMany( [ { name: "steve”, email_address: "s@gmail.com" },{ name: "tanev”, email_address: "t@gmail.com" }])
+2019-06-02T15:38:39.763+0000 E QUERY    [js] SyntaxError: missing } after property list @(shell):1:55
+> db.user.insertMany( [ { name: "steve”, email_address: "s@gmail.com" }, { name: "tanev”, email_address: "t@gmail.com" }])
+2019-06-02T15:38:57.546+0000 E QUERY    [js] SyntaxError: missing } after property list @(shell):1:55
+> db.user.insertMany( [ { name: "mike", email_address: "mike@gmail.com" } ] )
+{
+	"acknowledged" : true,
+	"insertedIds" : [
+		ObjectId("5cf3edb7f29e6386133dc5ca")
+	]
+}
+> db.insetMany( [
+... { name: "m", email_address: "m@m.com" },
+... { name: "s", email_address: "s@s.com" },
+... { name: "t", email_address: "g@g.com" },
+... { name: "g", email_address: "c@c.com" },
+... { name: "r", email_address: "f@s.com" },
+... { name" "q", email_address: "w@w.com" },
+2019-06-02T15:45:38.657+0000 E QUERY    [js] SyntaxError: missing : after property id @(shell):7:6
+> db.insetMany( [ { name: "m", email_address: "m@m.com" }, { name: "s", email_address: "s@s.com" }, { name: "t", email_address: "g@g.com" }, { name: "g", email_address: "c@c.com" }, { name: "r", email_address: "f@s.com" }, { name" "q", email_address: "w@w.com" } ] )
+2019-06-02T15:46:54.327+0000 E QUERY    [js] SyntaxError: missing : after property id @(shell):1:227
+> > db.insetMany( [
+... ... { name: "m", email_address: "m@m.com" },
+... ... { name: "s", email_address: "s@s.com" },
+... ... { name: "t", email_address: "g@g.com" },
+... ... { name: "g", email_address: "c@c.com" },
+... ... { name: "r", email_address: "f@s.com" }
+... ] )
+2019-06-02T16:12:04.851+0000 E QUERY    [js] SyntaxError: expected expression, got '>' @(shell):1:0
+> db.user.insertMany( [
+... ... ... { name: "m", email_address: "m@m.com" },
+... ... ... { name: "s", email_address: "s@s.com" },
+... ... ... { name: "t", email_address: "g@g.com" },
+... ... ... { name: "g", email_address: "c@c.com" },
+... ... ... { name: "r", email_address: "f@s.com" }
+... ] )
+{
+	"acknowledged" : true,
+	"insertedIds" : [
+		ObjectId("5cf3f59ff29e6386133dc5cb"),
+		ObjectId("5cf3f59ff29e6386133dc5cc"),
+		ObjectId("5cf3f59ff29e6386133dc5cd"),
+		ObjectId("5cf3f59ff29e6386133dc5ce"),
+		ObjectId("5cf3f59ff29e6386133dc5cf")
+	]
+}
+> db.user.insertMany( [
+... ... ... { name: "m", email_address: "m@m.com" },
+... ... ... { name: "s", email_address: "s@s.com" },
+... ... ... { name: "t", email_address: "g@g.com" },
+... ... ... { name: "g", email_address: "c@c.com" },
+... ... ... { name: "r", email_address: "f@s.com" },
+... ... ... { name: "m", email_address: "m@m.com" },
+... ... ... { name: "s", email_address: "s@s.com" },
+... ... ... { name: "t", email_address: "g@g.com" },
+... ... ... { name: "g", email_address: "c@c.com" },
+... ... ... { name: "r", email_address: "f@s.com" },
+... ... ... { name: "m", email_address: "m@m.com" },
+... ... ... { name: "s", email_address: "s@s.com" },
+... ... ... { name: "t", email_address: "g@g.com" },
+... ... ... { name: "g", email_address: "c@c.com" },
+... ... ... { name: "r", email_address: "f@s.com" }
+... ] )
+{
+	"acknowledged" : true,
+	"insertedIds" : [
+		ObjectId("5cf3f5eaf29e6386133dc5d0"),
+		ObjectId("5cf3f5eaf29e6386133dc5d1"),
+		ObjectId("5cf3f5eaf29e6386133dc5d2"),
+		ObjectId("5cf3f5eaf29e6386133dc5d3"),
+		ObjectId("5cf3f5eaf29e6386133dc5d4"),
+		ObjectId("5cf3f5eaf29e6386133dc5d5"),
+		ObjectId("5cf3f5eaf29e6386133dc5d6"),
+		ObjectId("5cf3f5eaf29e6386133dc5d7"),
+		ObjectId("5cf3f5eaf29e6386133dc5d8"),
+		ObjectId("5cf3f5eaf29e6386133dc5d9"),
+		ObjectId("5cf3f5eaf29e6386133dc5da"),
+		ObjectId("5cf3f5eaf29e6386133dc5db"),
+		ObjectId("5cf3f5eaf29e6386133dc5dc"),
+		ObjectId("5cf3f5eaf29e6386133dc5dd"),
+		ObjectId("5cf3f5eaf29e6386133dc5de")
+	]
+}
+> db.getCollection('american_movies')
+reviews.american_movies
+> db.collectionName.findOne()
+null
+> 
