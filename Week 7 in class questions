@@ -1,0 +1,104 @@
+Create a database called reviews
+> use reviews
+switched to db reviews
+
+
+Create a collection named “user” with the fields “name” and “email_address”. Both of type string
+> db.user.insertOne( {
+... name:"",
+... email_address:""
+... } )
+{
+	"acknowledged" : true,
+	"insertedId" : ObjectId("5cf3e15ff29e6386133dc5c4")
+}
+
+
+Create another collection named “article” with the keys “name”, “webpage”, “text” and “Author” of type String, and “publish_date” of type Date.
+> db.article.insertOne( {
+... name:"",
+... webpage:"",
+... text:"",
+... publish_date: new Date(),
+... })
+{
+	"acknowledged" : true,
+	"insertedId" : ObjectId("5cf3e6b9f29e6386133dc5c6")
+}
+
+
+Insert 10 rows at “User” and “”Article” collections
+> db.user.insertMany( [
+... ... ... { name: "m", email_address: "m@m.com" },
+... ... ... { name: "s", email_address: "s@s.com" },
+... ... ... { name: "t", email_address: "g@g.com" },
+... ... ... { name: "g", email_address: "c@c.com" },
+... ... ... { name: "r", email_address: "f@s.com" },
+... ... ... { name: "m", email_address: "m@m.com" },
+... ... ... { name: "s", email_address: "s@s.com" },
+... ... ... { name: "t", email_address: "g@g.com" },
+... ... ... { name: "g", email_address: "c@c.com" },
+... ... ... { name: "r", email_address: "f@s.com" },
+... ... ... { name: "m", email_address: "m@m.com" },
+... ... ... { name: "s", email_address: "s@s.com" },
+... ... ... { name: "t", email_address: "g@g.com" },
+... ... ... { name: "g", email_address: "c@c.com" },
+... ... ... { name: "r", email_address: "f@s.com" }
+... ] )
+{
+	"acknowledged" : true,
+	"insertedIds" : [
+		ObjectId("5cf3f5eaf29e6386133dc5d0"),
+		ObjectId("5cf3f5eaf29e6386133dc5d1"),
+		ObjectId("5cf3f5eaf29e6386133dc5d2"),
+		ObjectId("5cf3f5eaf29e6386133dc5d3"),
+		ObjectId("5cf3f5eaf29e6386133dc5d4"),
+		ObjectId("5cf3f5eaf29e6386133dc5d5"),
+		ObjectId("5cf3f5eaf29e6386133dc5d6"),
+		ObjectId("5cf3f5eaf29e6386133dc5d7"),
+		ObjectId("5cf3f5eaf29e6386133dc5d8"),
+		ObjectId("5cf3f5eaf29e6386133dc5d9"),
+		ObjectId("5cf3f5eaf29e6386133dc5da"),
+		ObjectId("5cf3f5eaf29e6386133dc5db"),
+		ObjectId("5cf3f5eaf29e6386133dc5dc"),
+		ObjectId("5cf3f5eaf29e6386133dc5dd"),
+		ObjectId("5cf3f5eaf29e6386133dc5de")
+	]
+}
+
+
+Find all drama movies from american_movies at movies database
+
+
+
+Update the drama movies to “Unknown”
+
+
+
+Find all movies that starts with “Sec” on its name
+
+
+
+Get all movies from 2017
+
+
+
+Delete all films of year 2017
+
+
+
+Create a table at a keyspace cycling named rank_by_year_and_name. This table will have race_year and rank as int type and race_name and cyclist_name as text
+
+
+
+Insert 10 rows on the table created on slide 28.
+
+
+
+Query the first ranked cyclist on 2014
+
+
+
+Update the name of the first ranked cyclist in 2015 to “Frank”
+
+
