@@ -1,0 +1,17 @@
+Link to my Big Data Storage article:
+https://medium.com/xplenty-blog/the-sql-vs-nosql-difference-mysql-vs-mongodb-32c9980e67b2
+
+Here are my thoughts from the article:
+This article does a good job comparing the different concepts we were learned throughout the course.
+Explains why someone would want to use SQL vs NoSQL with good examples.
+SQL is more of a mature database with strong table based structure which is used more predomiantly for accounting systems or legacy products
+Where NoSQL is a lot less structured therefore can support the databases such as document, key based, graph, or column. you dont need a structured  schema where all tables do not follow the same structure.
+
+The comparison i liked in the article was SQL is a city where everyone speaks the same langugage and if you need to increase the size you are adding floors to a building.
+NoSql was compared to a city where everyone speaks a different langugage and when you expand the city and simply build more building.
+This was a great analogy.
+
+To decide between SQL and NoSQL you need to understand what data you are dealing and what is important for you: SQL - Maturity; compatibility; cost-effective; replicable; sharding vs NoSQL dynamic schema; scalability; manageability; speed; flexibility.
+
+I liked this article since it was a topic we discussed in class based on what is more widely used in industry and it really comes down to if you are a startup that will consume a lot of data you probably are going to go with NoSQL,
+However if you are a large institution with legacy products probably going to go with SQL.
