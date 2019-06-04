@@ -88,7 +88,13 @@ Delete all films of year 2017
 
 
 Create a table at a keyspace cycling named rank_by_year_and_name. This table will have race_year and rank as int type and race_name and cyclist_name as text
-
+cqlsh> create table cycling.rank_by_year_and_name
+   ... (
+   ... race_year int,
+   ... rank int,
+   ... race_name text,
+   ... cyclist_name text,
+   ... primary key (race_name, cyclist_name));
 
 
 Insert 10 rows on the table created on slide 28.
