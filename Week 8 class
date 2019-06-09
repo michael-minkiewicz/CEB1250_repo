@@ -1,0 +1,67 @@
+Microsoft Windows [Version 10.0.17763.503]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\Users\micha>cd db-sandbox
+
+C:\Users\micha\db-sandbox>docker-compose up -d
+python is up-to-date
+mongo-express is up-to-date
+neo4j is up-to-date
+cassandra is up-to-date
+mongo is up-to-date
+mysql is up-to-date
+redis is up-to-date
+
+C:\Users\micha\db-sandbox>docker exec -it redis /bin/bash
+root@redis:/data# redis-cli
+127.0.0.1:6379> ping
+PONG
+127.0.0.1:6379> mset key1 "this is a test key" key3 6 key3 9.0 key4 "hello"
+OK
+127.0.0.1:6379> get key2
+(nil)
+127.0.0.1:6379> get key1
+"this is a test key"
+127.0.0.1:6379> mset key1 "this is a test" key2 "6" key3 9.0 key4 "hello"
+OK
+127.0.0.1:6379> get key3
+"9.0"
+127.0.0.1:6379>
+127.0.0.1:6379> scan 0
+1) "0"
+2) 1) "key4"
+   2) "key1"
+   3) "key3"
+   4) "key2"
+127.0.0.1:6379> incrby key2 10
+(integer) 16
+127.0.0.1:6379> setrange key1 14 "to appending text"
+(integer) 31
+127.0.0.1:6379> get key1
+"this is a testto appending text"
+127.0.0.1:6379> setrange key1 14 " to appending text"
+(integer) 32
+127.0.0.1:6379> get key1
+"this is a test to appending text"
+127.0.0.1:6379> incrby key3 -.50
+(error) ERR value is not an integer or out of range
+127.0.0.1:6379> incrby key3 -0.5
+(error) ERR value is not an integer or out of range
+127.0.0.1:6379> append key4 " World"
+(integer) 11
+127.0.0.1:6379> get key 4
+(error) ERR wrong number of arguments for 'get' command
+127.0.0.1:6379> get key4
+"hello World"
+127.0.0.1:6379> mget key1 key2 key3 key4
+1) "this is a test to appending text"
+2) "16"
+3) "9.0"
+4) "hello World"
+127.0.0.1:6379> del key4
+(integer) 1
+127.0.0.1:6379> get key4
+(nil)
+127.0.0.1:6379> incrbyfloat key3 -.50
+"8.5"
+127.0.0.1:6379>
