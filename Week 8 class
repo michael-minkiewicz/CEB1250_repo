@@ -65,3 +65,20 @@ OK
 127.0.0.1:6379> incrbyfloat key3 -.50
 "8.5"
 127.0.0.1:6379>
+
+
+CQL NEO4J:
+create (weber:captain {name: "Shea Michael Weber", acquired: 2016, position: "Defence"})
+
+create (Domi:player {name: "Max Domi", acquired: 2018, position: "centre"})
+
+create (price:player {name: "Carey Price", acquired: 2005, position: "goaltender"})
+
+create (petry:player {name: "Jeff Petry", acquired: 2015, position: "Defence"})
+
+create (benn:player {name: "Jordie Benn", acquired: 2017, position: "Defence"})
+
+create (habs:team {name: "Montreal Canadiens", sport: "ice hockey", league: "NHL"})
+
+create (habs)-[r:roster{season:2019}]->(player)
+
