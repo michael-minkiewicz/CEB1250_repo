@@ -131,10 +131,13 @@ match (player) return count(player.position)
 
 Return the maximum acquired value among the players
 
-
+match (player) return max (player.acquired)
 
 Add the label player on the node Weber
 
-
+create(weber:player)
 
 Remove the position of the nodes which position is Defence
+
+
+
