@@ -16,69 +16,125 @@ C:\Users\micha\db-sandbox>docker exec -it redis /bin/bash
 root@redis:/data# redis-cli
 127.0.0.1:6379> ping
 PONG
-127.0.0.1:6379> mset key1 "this is a test key" key3 6 key3 9.0 key4 "hello"
-OK
-127.0.0.1:6379> get key2
-(nil)
-127.0.0.1:6379> get key1
-"this is a test key"
+
+Create three keys named key1, key2, key3 and key4 with the respective values “This is a test key”, 6, 9.0 and “hello”
+
 127.0.0.1:6379> mset key1 "this is a test" key2 "6" key3 9.0 key4 "hello"
 OK
 127.0.0.1:6379> get key3
 "9.0"
-127.0.0.1:6379>
+
+
+
 127.0.0.1:6379> scan 0
 1) "0"
 2) 1) "key4"
    2) "key1"
    3) "key3"
    4) "key2"
+
+
+
+Increase the value of key2 by 10
+
 127.0.0.1:6379> incrby key2 10
 (integer) 16
-127.0.0.1:6379> setrange key1 14 "to appending text"
-(integer) 31
-127.0.0.1:6379> get key1
-"this is a testto appending text"
+
+
+
+Change the value of key1 starting from the 14th position to “ to appending text”
+
 127.0.0.1:6379> setrange key1 14 " to appending text"
 (integer) 32
 127.0.0.1:6379> get key1
 "this is a test to appending text"
-127.0.0.1:6379> incrby key3 -.50
-(error) ERR value is not an integer or out of range
-127.0.0.1:6379> incrby key3 -0.5
-(error) ERR value is not an integer or out of range
+
+
+
+Subtract .50 from the key3 value
+
+127.0.0.1:6379> incrbyfloat key3 -.50
+"8.5"
+
+
+Append “ World” into key4
+
 127.0.0.1:6379> append key4 " World"
 (integer) 11
-127.0.0.1:6379> get key 4
-(error) ERR wrong number of arguments for 'get' command
+
 127.0.0.1:6379> get key4
 "hello World"
+
+
+Return the value of keys 1 to 4
+
 127.0.0.1:6379> mget key1 key2 key3 key4
 1) "this is a test to appending text"
 2) "16"
 3) "9.0"
 4) "hello World"
+
+
+Delete the key4
+
 127.0.0.1:6379> del key4
 (integer) 1
+
+
+Verify if key4 exists
+
 127.0.0.1:6379> get key4
 (nil)
-127.0.0.1:6379> incrbyfloat key3 -.50
-"8.5"
-127.0.0.1:6379>
+
+
+
+
 
 
 CQL NEO4J:
+
+Create a node called weber with label captain with properties: name Shea Michael Weber, acquired 2016, position Defence
+
 create (weber:captain {name: "Shea Michael Weber", acquired: 2016, position: "Defence"})
+
+Create a node called domi with label player and properties: name Max Domi, acquired 2018 position centre
 
 create (Domi:player {name: "Max Domi", acquired: 2018, position: "centre"})
 
+Create a node called price with label player and properties: name Carey Price, acquired 2005, position goaltender,
+
 create (price:player {name: "Carey Price", acquired: 2005, position: "goaltender"})
+
+Create a node called petry with label player and properties: name Jeff Petry, acquired 2015, position Defence
 
 create (petry:player {name: "Jeff Petry", acquired: 2015, position: "Defence"})
 
+Create a node called benn, with label player and properties: name Jordie Benn, acquired 2017, position Defence
+
 create (benn:player {name: "Jordie Benn", acquired: 2017, position: "Defence"})
+
+Create a node called habs with label team and properties: name Montreal Canadiens, sport ice hockey and league NHL
 
 create (habs:team {name: "Montreal Canadiens", sport: "ice hockey", league: "NHL"})
 
+Create a relationship between all nodes with label player and captain with the node habs, label this relationship rosters with property season 2019
+
 create (habs)-[r:roster{season:2019}]->(player)
 
+Return all nodes with player as labels
+
+match (player) return player
+
+Return the amount of existing players with position Defence
+
+match (player) return count(player.position)
+
+Return the maximum acquired value among the players
+
+
+
+Add the label player on the node Weber
+
+
+
+Remove the position of the nodes which position is Defence
