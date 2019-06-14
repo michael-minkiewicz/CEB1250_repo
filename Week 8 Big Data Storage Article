@@ -3,4 +3,9 @@ https://blogs.perficient.com/2016/07/15/most-common-nosql-databases/
 
 Here are my thoughts on the article:
 
-
+The article breaksdown the 4 most common types of NoSQL databases, therefore making the link with concepts we have learned in class.
+What was cool about the article was it briefly broke down key based, column based, document based & graph based databases.
+It gave options for databases depending on the type of NoSQL ie: Cassandra, HBase for column; neo4j for graph; couchDB for document; & redis oracle for Key.
+The article also gives a breakdown of how the values or nodes are stored and the format they must respect.
+This was a great summary of the NoSQL concepts we learned and class.
+Also this article is a good reference when I want to make a quick decision on what type of format I want my database to have.
